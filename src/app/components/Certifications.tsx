@@ -1,50 +1,63 @@
-import { motion } from 'motion/react';
-import { Award, BadgeCheck, ExternalLink } from 'lucide-react';
+import { motion } from "motion/react";
+import { Award, BadgeCheck, ExternalLink } from "lucide-react";
 
 const certifications = [
   {
-    name: "Great Powered Data Analysis",
-    issuer: "EXL M",
-    category: "Data Science"
+    name: "GenAI Powered Data Analysis",
+    issuer: "Tata iQ",
+    category: "Data Science",
   },
   {
-    name: "Digital Marketing",
-    issuer: "EXL M",
-    category: "Marketing"
+    name: "Data Analytics Job Simulation",
+    issuer: "Deloitte Australia",
+    category: "Data Analysis",
   },
   {
-    name: "The Bits and Bytes of Computer Networking",
-    issuer: "Google",
-    category: "Networking"
+    name: "Technology Job Simulation",
+    issuer: "Deloitte Australia",
+    category: "Computer Science",
   },
   {
     name: "Entrepreneurship",
-    issuer: "NPTEL B.T Nawas",
-    category: "Business"
+    issuer: "NPTEL & IIT Madras",
+    category: "Business",
   },
   {
-    name: "HTML Training and Certification",
-    issuer: "Certificate Provider",
-    category: "Web Development"
+    name: "Perl Training",
+    issuer: " Galgotias University",
+    category: "Web Development",
   },
   {
-    name: "C & C++ Internship",
-    issuer: "Coding Blocks",
-    category: "Programming"
+    name: "Introduction to Networks",
+    issuer: "Computer Networking Academy",
+    category: "Network Administration/Management",
   },
   {
-    name: "The Complete Java Developer Internship",
+    name: "Python Full Stack Developer Internship",
     issuer: "Eduskills & AICTE",
-    category: "Programming"
-  }
+    category: "Programming",
+  },
+  {
+    name: "Introduction to Data Analytics",
+    issuer: "Simplilearn",
+    category: "Data Science",
+  },
+  {
+    name: "QA Tester",
+    issuer: "HyperCloud Digital Solutions",
+    category: "Web & Mobile App",
+  },
 ];
 
 export function Certifications() {
   return (
-    <section id="certifications" className="py-20 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
+    <section
+      id="certifications"
+      className="py-20 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden"
+    >
       {/* Background effects */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(251,191,36,0.1),transparent_50%)]" />
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -62,7 +75,9 @@ export function Certifications() {
               </h2>
               <div className="h-px w-12 bg-gradient-to-l from-transparent to-yellow-400"></div>
             </div>
-            <p className="text-xl text-gray-400 font-mono">// My professional certifications</p>
+            <p className="text-xl text-gray-400 font-mono">
+              // My professional certifications
+            </p>
           </div>
         </motion.div>
 
@@ -74,12 +89,15 @@ export function Certifications() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.1,
+                }}
                 whileHover={{ scale: 1.05, y: -5 }}
                 className="group relative"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
-                
+
                 <div className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border-2 border-yellow-500/30 rounded-lg p-6 hover:border-yellow-400/50 transition-all">
                   {/* Certificate badge */}
                   <div className="flex items-center justify-between mb-4">
@@ -105,7 +123,9 @@ export function Certifications() {
                       {cert.name}
                     </h3>
                     <div className="flex items-center gap-2 text-gray-400 font-mono text-sm">
-                      <span className="text-cyan-400">issued_by:</span>
+                      <span className="text-cyan-400">
+                        issued_by:
+                      </span>
                       <span>"{cert.issuer}"</span>
                     </div>
                   </div>
@@ -128,8 +148,13 @@ export function Certifications() {
             <div className="inline-block bg-gradient-to-br from-gray-900 to-gray-800 border border-yellow-500/30 rounded-lg p-6">
               <p className="text-gray-300 font-mono">
                 <span className="text-yellow-400">const</span>
-                <span className="text-white"> totalCertifications = </span>
-                <span className="text-green-400">{certifications.length}</span>
+                <span className="text-white">
+                  {" "}
+                  totalCertifications ={" "}
+                </span>
+                <span className="text-green-400">
+                  {certifications.length}
+                </span>
                 <span className="text-white">;</span>
               </p>
               <p className="text-gray-400 font-mono text-sm mt-2">

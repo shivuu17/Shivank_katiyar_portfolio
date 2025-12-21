@@ -17,7 +17,7 @@ const education = [
   },
   {
     degree: "Intermediate (12th Grade)",
-    institution: "Keshav Senior Secondary School | CBSE",
+    institution: "GD Goenka Global School | CBSE",
     period: "2022 - 2023",
     gpa: "85.8%",
     achievements: [
@@ -29,7 +29,7 @@ const education = [
   },
   {
     degree: "High School (10th Grade)",
-    institution: "ARJESS School | J.B.M.E.C.S.M",
+    institution: "JSM Public School | CBSE",
     period: "2020 - 2021",
     gpa: "Pass",
     achievements: [

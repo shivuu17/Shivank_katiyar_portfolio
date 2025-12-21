@@ -53,7 +53,7 @@ export function Contact() {
                         href="mailto:katiyarshivank22@gmail.com" 
                         className="text-lg text-cyan-400 hover:text-green-400 transition-colors font-mono"
                       >
-                        katiyarshivank22@gmail.com
+                        katiyarshivank927@gmail.com
                       </a>
                     </div>
                   </div>
@@ -118,7 +118,7 @@ export function Contact() {
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                href="https://github.com/Shivank-Katiyar"
+                href="https://github.com/Shivuu17"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05, x: -10 }}
@@ -135,7 +135,7 @@ export function Contact() {
                     <div className="flex-1">
                       <p className="text-sm text-gray-400 font-mono mb-1">GITHUB_PROFILE</p>
                       <p className="text-lg text-cyan-400 group-hover:text-green-400 transition-colors font-mono">
-                        github.com/Shivank-Katiyar
+                        github.com/Shivuu17
                       </p>
                     </div>
                     <Send className="w-5 h-5 text-gray-600 group-hover:text-cyan-400 transition-all group-hover:translate-x-1" />
@@ -148,7 +148,7 @@ export function Contact() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                href="https://linkedin.com/in/yourusername"
+                href="https://linkedin.com/in/shivank-katiyar"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05, x: -10 }}
@@ -165,7 +165,7 @@ export function Contact() {
                     <div className="flex-1">
                       <p className="text-sm text-gray-400 font-mono mb-1">LINKEDIN_PROFILE</p>
                       <p className="text-lg text-blue-400 group-hover:text-cyan-400 transition-colors font-mono">
-                        linkedin.com/in/yourusername
+                        linkedin.com/in/shivank-katiyar
                       </p>
                     </div>
                     <Send className="w-5 h-5 text-gray-600 group-hover:text-blue-400 transition-all group-hover:translate-x-1" />

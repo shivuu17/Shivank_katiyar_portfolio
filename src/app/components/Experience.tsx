@@ -4,7 +4,7 @@ import { Briefcase, Code, Calendar, Sparkles, Zap, FolderGit2 } from 'lucide-rea
 const experiences = [
   {
     role: "QA Testing Intern",
-    company: "Hypernatural Digital Solutions",
+    company: "HyperCloud Digital Solutions",
     period: "July 2025 - Oct 2025",
     type: "Internship",
     description: "Performed comprehensive quality assurance testing for digital solutions",
@@ -20,7 +20,7 @@ const experiences = [
 
 const projects = [
   {
-    name: "Library System",
+    name: "Library Management System",
     description: "Library management tool built with Python and SQL",
     features: [
       "Book cataloging and management",
@@ -31,15 +31,14 @@ const projects = [
     tech: ["Python", "SQL", "Database Design"]
   },
   {
-    name: "PlaceWall",
+    name: "FlexxWell ",
     description: "Responsive web application for workload planning",
     features: [
       "Responsive web design",
       "User login and authentication",
       "Workload planning features",
-      "Contact form with backend integration"
     ],
-    tech: ["HTML", "CSS", "JavaScript", "Backend Integration"]
+    tech: ["HTML", "CSS", "JavaScript"]
   }
 ];
 
@@ -53,13 +52,13 @@ const skills = [
   { 
     category: "Web Tech", 
     icon: "🌐",
-    items: ["HTML", "CSS", "MySQL", "JavaScript", "Replit", "APIs", "ChatGPT Integration"],
+    items: ["HTML", "CSS", "MySQL", "JavaScript", "Replit", "APIs", "ChatGPT "],
     color: "green"
   },
   { 
     category: "Tools", 
     icon: "🛠️",
-    items: ["Figma", "MS Office", "Excel", "Workbench", "Replit", "Git"],
+    items: ["Figma", "MS Office", "Excel", "Workbench", "Replit", "Git", "PowerBI", "VS Code", "ChatGPT", "Github "],
     color: "purple"
   },
   { 
