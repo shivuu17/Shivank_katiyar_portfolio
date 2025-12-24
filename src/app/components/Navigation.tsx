@@ -21,7 +21,7 @@ export function Navigation() {
           >
             <Terminal className="w-6 h-6 text-cyan-400" />
             <h1 className="text-xl font-mono text-cyan-400">
-              <span className="text-green-400">~/</span>portfolio
+              <span className="text-green-400">~/</span>Shivank-Katiyar-portfolio
             </h1>
           </motion.div>
           
