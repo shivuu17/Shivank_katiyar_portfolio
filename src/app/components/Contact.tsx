@@ -174,12 +174,12 @@ export function Contact() {
               </motion.a>
 
               <motion.a
+                href="/resume.pdf"
+                download
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                href="/resume.pdf"
-                download
                 whileHover={{ scale: 1.05, x: -10 }}
                 className="group block"
               >

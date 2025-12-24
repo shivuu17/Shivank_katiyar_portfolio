@@ -48,10 +48,10 @@ export function Navigation() {
               <span className="group-hover:underline">./contact</span>
             </button>
             <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               href="/resume.pdf"
               download
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               className="flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-green-500 text-black px-4 py-2 rounded font-bold hover:shadow-lg hover:shadow-cyan-500/50 transition-all"
             >
               <Download className="w-4 h-4" />
