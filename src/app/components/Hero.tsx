@@ -158,7 +158,7 @@ export function Hero() {
                   <motion.a
                     whileHover={{ scale: 1.1, y: -5 }}
                     whileTap={{ scale: 0.9 }}
-                    href="https://linkedin.com/shivank-katiyar"
+                    href="https://www.linkedin.com/in/shivank-katiyar/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 border border-cyan-500/30 rounded hover:border-cyan-400 transition-all"
