@@ -11,9 +11,9 @@ const education = [
     degree: "Bachelor of Computer Applications",
     institution: "Galgotias University",
     period: "2023 - 2026",
-    gpa: "PASS",
+    gpa: "ON GOING",
     achievements: [
-      "GPA of 8.15 till 4th Semester",
+      "SGPA of 8.15 4th Semester",
       "Active member of Computer Science Club",
       "Participated in multiple hackathons",
       "Strong foundation in programming and full-stack development",
