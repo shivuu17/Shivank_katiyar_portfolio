@@ -31,7 +31,7 @@ const education = [
     degree: "Intermediate (12th Grade)",
     institution: "GD Goenka Global School | CBSE",
     period: "2022 - 2023",
-    gpa: "85.8%",
+    gpa: "PASS",
     achievements: [
       "Completed with strong academic distinction.",
       "Strong foundation in core subjects",
