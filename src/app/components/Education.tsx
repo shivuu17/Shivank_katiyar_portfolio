@@ -31,7 +31,7 @@ const education = [
     degree: "Intermediate (12th Grade)",
     institution: "GD Goenka Global School | CBSE",
     period: "2022 - 2023",
-    gpa: "85.8%",
+    gpa: "PASS",
     achievements: [
       "Completed with 85.8% marks",
       "Strong foundation in core subjects",
@@ -48,7 +48,7 @@ const education = [
     degree: "High School (10th Grade)",
     institution: "JSM Public School | CBSE",
     period: "2020 - 2021",
-    gpa: "Pass",
+    gpa: "PASS",
     achievements: [
       "Successfully completed high school education",
       "Developed interest in Computer Science",
@@ -167,7 +167,9 @@ export function Education() {
                               <span className="text-cyan-400 flex-shrink-0">
                                 ✓
                               </span>
-                              <span className="break-words">{achievement}</span>
+                              <span className="break-words">
+                                {achievement}
+                              </span>
                             </div>
                           ),
                         )}
