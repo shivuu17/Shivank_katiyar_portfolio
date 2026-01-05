@@ -148,7 +148,7 @@ export function Navigation() {
                 <div className="pt-4">
                   <motion.a
                     whileTap={{ scale: 0.95 }}
-                    href="/resume.pdf"
+                    href="/RESUME_SHIVANK_KATIYAR.pdf"
                     download
                     onClick={() => setIsMenuOpen(false)}
                     className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-green-500 text-black px-4 py-3 rounded-lg font-bold hover:shadow-lg hover:shadow-cyan-500/50 transition-all"
