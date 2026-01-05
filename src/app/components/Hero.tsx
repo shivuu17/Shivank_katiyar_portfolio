@@ -11,25 +11,25 @@ import { TerminalText } from "./TerminalText";
 
 export function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+    <section className="min-h-[85vh] sm:min-h-screen flex items-center justify-center relative overflow-hidden pt-16 sm:pt-20">
       {/* Animated background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:2rem_2rem] sm:bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
       </div>
 
-      {/* Floating particles */}
+      {/* Floating particles - reduced for mobile performance */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(10)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-cyan-400 rounded-full"
+            className="absolute w-1 h-1 sm:w-2 sm:h-2 bg-cyan-400 rounded-full"
             initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
+              x: typeof window !== "undefined" ? Math.random() * window.innerWidth : 0,
+              y: typeof window !== "undefined" ? Math.random() * window.innerHeight : 0,
             }}
             animate={{
-              y: [null, Math.random() * window.innerHeight],
-              x: [null, Math.random() * window.innerWidth],
+              y: typeof window !== "undefined" ? [null, Math.random() * window.innerHeight] : [0, 100],
+              x: typeof window !== "undefined" ? [null, Math.random() * window.innerWidth] : [0, 100],
             }}
             transition={{
               duration: Math.random() * 10 + 10,
@@ -41,7 +41,7 @@ export function Hero() {
         ))}
       </div>
 
-      <div className="container mx-auto px-4 py-12 relative z-10">
+      <div className="container mx-auto px-4 py-8 sm:py-12 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Terminal Window */}
           <motion.div
@@ -51,21 +51,21 @@ export function Hero() {
             className="bg-gray-900/80 backdrop-blur-sm rounded-lg border border-cyan-500/30 shadow-2xl shadow-cyan-500/20 overflow-hidden"
           >
             {/* Terminal Header */}
-            <div className="bg-gray-800 px-4 py-2 flex items-center gap-2 border-b border-cyan-500/30">
-              <div className="flex gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            <div className="bg-gray-800 px-3 py-2 sm:px-4 sm:py-2 flex items-center gap-2 border-b border-cyan-500/30">
+              <div className="flex gap-1.5 sm:gap-2">
+                <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
+                <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
+                <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
               </div>
-              <span className="text-gray-400 text-sm font-mono ml-4">
+              <span className="text-gray-400 text-xs sm:text-sm font-mono ml-2 sm:ml-4 truncate">
                 bash - portfolio@main
               </span>
             </div>
 
             {/* Terminal Content */}
-            <div className="p-8 font-mono text-sm space-y-4">
+            <div className="p-4 sm:p-6 md:p-8 font-mono text-xs sm:text-sm space-y-3 sm:space-y-4">
               <div className="space-y-2">
-                <div className="text-green-400">
+                <div className="text-green-400 text-xs sm:text-sm">
                   <span className="text-cyan-400">
                     guest@portfolio
                   </span>
@@ -76,7 +76,7 @@ export function Hero() {
                   </span>
                 </div>
 
-                <div className="pl-4 space-y-3 text-lg md:text-2xl">
+                <div className="pl-2 sm:pl-4 space-y-2 sm:space-y-3 text-sm sm:text-lg md:text-2xl">
                   <div className="text-cyan-400">
                     <TerminalText
                       text="Hello World! I'm Shivank Katiyar 👋"
@@ -98,8 +98,8 @@ export function Hero() {
                 </div>
               </div>
 
-              <div className="space-y-2 pt-6">
-                <div className="text-green-400">
+              <div className="space-y-2 pt-4 sm:pt-6">
+                <div className="text-green-400 text-xs sm:text-sm">
                   <span className="text-cyan-400">
                     guest@portfolio
                   </span>
@@ -110,26 +110,24 @@ export function Hero() {
                   </span>
                 </div>
 
-                <div className="pl-4 text-gray-300 space-y-2">
-                  <p className="flex items-center gap-2">
-                    <Code2 className="w-4 h-4 text-cyan-400" />
-                    Dedicated BCA student with strong skills in
-                    programming and Analysis
+                <div className="pl-2 sm:pl-4 text-gray-300 space-y-2 text-xs sm:text-sm">
+                  <p className="flex items-start gap-2">
+                    <Code2 className="w-3 h-3 sm:w-4 sm:h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
+                    <span>Dedicated BCA student with strong skills in programming and Analysis</span>
                   </p>
-                  <p className="flex items-center gap-2">
-                    <Cpu className="w-4 h-4 text-green-400" />
-                    Expertise in Data Analysis and Visualisation
+                  <p className="flex items-start gap-2">
+                    <Cpu className="w-3 h-3 sm:w-4 sm:h-4 text-green-400 flex-shrink-0 mt-0.5" />
+                    <span>Expertise in Data Analysis and Visualisation</span>
                   </p>
-                  <p className="flex items-center gap-2">
-                    <Terminal className="w-4 h-4 text-purple-400" />
-                    Constantly developing skills in coding and
-                    Data Science and Machine Learning
+                  <p className="flex items-start gap-2">
+                    <Terminal className="w-3 h-3 sm:w-4 sm:h-4 text-purple-400 flex-shrink-0 mt-0.5" />
+                    <span>Constantly developing skills in coding and Data Science and Machine Learning</span>
                   </p>
                 </div>
               </div>
 
-              <div className="space-y-2 pt-6">
-                <div className="text-green-400">
+              <div className="space-y-2 pt-4 sm:pt-6">
+                <div className="text-green-400 text-xs sm:text-sm">
                   <span className="text-cyan-400">
                     guest@portfolio
                   </span>
@@ -140,42 +138,42 @@ export function Hero() {
                   </span>
                 </div>
 
-                <div className="pl-4 flex gap-4">
+                <div className="pl-2 sm:pl-4 flex flex-col sm:flex-row gap-2 sm:gap-4">
                   <motion.a
-                    whileHover={{ scale: 1.1, y: -5 }}
-                    whileTap={{ scale: 0.9 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                     href="https://github.com/Shivuu17"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 border border-cyan-500/30 rounded hover:border-cyan-400 transition-all"
+                    className="group flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-gray-800 hover:bg-gray-700 border border-cyan-500/30 rounded hover:border-cyan-400 transition-all text-xs sm:text-sm min-h-[44px] sm:min-h-0"
                   >
-                    <Github className="w-5 h-5 text-cyan-400" />
+                    <Github className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
                     <span className="text-cyan-400 group-hover:text-green-400">
                       GitHub
                     </span>
                   </motion.a>
 
                   <motion.a
-                    whileHover={{ scale: 1.1, y: -5 }}
-                    whileTap={{ scale: 0.9 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                     href="https://www.linkedin.com/in/shivank-katiyar/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 border border-cyan-500/30 rounded hover:border-cyan-400 transition-all"
+                    className="group flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-gray-800 hover:bg-gray-700 border border-cyan-500/30 rounded hover:border-cyan-400 transition-all text-xs sm:text-sm min-h-[44px] sm:min-h-0"
                   >
-                    <Linkedin className="w-5 h-5 text-cyan-400" />
+                    <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
                     <span className="text-cyan-400 group-hover:text-green-400">
                       LinkedIn
                     </span>
                   </motion.a>
 
                   <motion.a
-                    whileHover={{ scale: 1.1, y: -5 }}
-                    whileTap={{ scale: 0.9 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                     href="mailto:katiyarshivank927@gmail.com"
-                    className="group flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 border border-cyan-500/30 rounded hover:border-cyan-400 transition-all"
+                    className="group flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-gray-800 hover:bg-gray-700 border border-cyan-500/30 rounded hover:border-cyan-400 transition-all text-xs sm:text-sm min-h-[44px] sm:min-h-0"
                   >
-                    <Mail className="w-5 h-5 text-cyan-400" />
+                    <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
                     <span className="text-cyan-400 group-hover:text-green-400">
                       Email
                     </span>
@@ -183,8 +181,8 @@ export function Hero() {
                 </div>
               </div>
 
-              <div className="pt-4">
-                <div className="text-gray-500 flex items-center gap-2">
+              <div className="pt-3 sm:pt-4">
+                <div className="text-gray-500 flex items-center gap-2 text-xs sm:text-sm">
                   <span className="text-cyan-400">
                     guest@portfolio
                   </span>
@@ -197,7 +195,7 @@ export function Hero() {
                       duration: 1,
                       repeat: Infinity,
                     }}
-                    className="inline-block w-2 h-5 bg-cyan-400 ml-1"
+                    className="inline-block w-1.5 h-3 sm:w-2 sm:h-5 bg-cyan-400 ml-1"
                   />
                 </div>
               </div>
@@ -209,7 +207,7 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
-            className="mt-8 text-center text-cyan-400/50 font-mono text-sm"
+            className="mt-6 sm:mt-8 text-center text-cyan-400/50 font-mono text-xs sm:text-sm"
           >
             <p>// Scroll down to explore my journey</p>
           </motion.div>
