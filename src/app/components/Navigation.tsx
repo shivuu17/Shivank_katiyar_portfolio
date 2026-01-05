@@ -27,7 +27,7 @@ export function Navigation() {
               <Terminal className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-400" />
               <h1 className="text-base sm:text-xl font-mono text-cyan-400">
                 <span className="text-green-400">~/</span>
-                <span className="hidden sm:inline">Shivank-portfolio</span>
+                <span className="hidden sm:inline">Shivank-Katiyar-portfolio</span>
                 <span className="sm:hidden">portfolio</span>
               </h1>
             </motion.div>
@@ -56,7 +56,7 @@ export function Navigation() {
                 <span className="group-hover:underline">./contact</span>
               </button>
               <motion.a
-                href="/resume.pdf"
+                href="/RESUME_SHIVANK_KATIYAR.pdf"
                 download
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
