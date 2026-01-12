@@ -174,7 +174,7 @@ export function Contact() {
               </motion.a>
 
               <motion.a
-                href="/resume.pdf"
+                href="/RESUME_SHIVANK_KATIYAR.pdf"
                 download
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
