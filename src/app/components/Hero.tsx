@@ -85,13 +85,13 @@ export function Hero() {
                   </div>
                   <div className="text-green-400">
                     <TerminalText
-                      text="BCA Student & Data Scientist Aspirant"
+                      text="MERN Stack Developer & BCA Final-Year Student"
                       delay={2000}
                     />
                   </div>
                   <div className="text-purple-400">
                     <TerminalText
-                      text="Building the future, one line at a time..."
+                      text="Building real products that solve real business problems"
                       delay={3500}
                     />
                   </div>
@@ -113,15 +113,15 @@ export function Hero() {
                 <div className="pl-2 sm:pl-4 text-gray-300 space-y-2 text-xs sm:text-sm">
                   <p className="flex items-start gap-2">
                     <Code2 className="w-3 h-3 sm:w-4 sm:h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
-                    <span>Dedicated BCA student with strong skills in programming and Analysis</span>
+                    <span>MERN Stack developer who has freelanced, shipped, and sold a live React web app to a real client</span>
                   </p>
                   <p className="flex items-start gap-2">
                     <Cpu className="w-3 h-3 sm:w-4 sm:h-4 text-green-400 flex-shrink-0 mt-0.5" />
-                    <span>Expertise in Data Analysis and Visualisation</span>
+                    <span>Currently building a QR-based restaurant ordering system with Firebase Firestore and real-time order management</span>
                   </p>
                   <p className="flex items-start gap-2">
                     <Terminal className="w-3 h-3 sm:w-4 sm:h-4 text-purple-400 flex-shrink-0 mt-0.5" />
-                    <span>Constantly developing skills in coding and Data Science and Machine Learning</span>
+                    <span>Experienced in QA testing across 3 production releases and certified by Deloitte, Tata iQ, Cisco, and AICTE</span>
                   </p>
                 </div>
               </div>

@@ -3,69 +3,96 @@ import { Briefcase, Code, Calendar, Sparkles, Zap, FolderGit2 } from 'lucide-rea
 
 const experiences = [
   {
+    role: "Freelance Web Developer",
+    company: "Self-Employed",
+    period: "2024 - Present",
+    type: "Freelance",
+    description: "Designed, developed, and deployed FlexxWell, a live React.js gym landing page with a QR-based customer acquisition flow.",
+    achievements: [
+      "Built QR flow: customer scans QR -> visits landing page -> clicks Join -> submits Google Form for demo booking",
+      "Sold and delivered the product to a real gym owner; app is live on Vercel and used for lead generation",
+      "Handled full lifecycle independently: requirement gathering, Figma UI/UX, React development, deployment, and handover"
+    ],
+    tech: ["React.js", "JavaScript", "Figma", "Vercel", "Google Forms", "QR Workflow"]
+  },
+  {
     role: "QA Testing Intern",
     company: "HyperCloud Digital Solutions",
-    period: "July 2025 - Oct 2025",
+    period: "Jul 2025 - Oct 2025",
     type: "Internship",
-    description: "Performed comprehensive quality assurance testing for digital solutions",
+    description: "Executed structured QA testing across 3 production software releases.",
     achievements: [
-      "Performed end-to-end tests and identified functionality issues",
-      "Verified bug fixes and classified issues systematically",
-      "Ensured functionality, usability across different platforms",
-      "Collaborated with developers to maintain high-quality releases"
+      "Designed and executed 100+ manual test cases across functional, regression, usability, and compatibility testing",
+      "Collaborated in bug triage, verified fixes, and maintained a structured defect log",
+      "Improved release confidence and reduced post-launch issues through consistent QA validation"
     ],
-    tech: ["Testing", "QA", "Bug Tracking", "Cross-Platform Testing"]
+    tech: ["Manual Testing", "Test Case Design", "Regression Testing", "Usability Testing", "Bug Reporting"]
   }
 ];
 
 const projects = [
   {
-    name: "Library Management System",
-    description: "Library management tool built with Python and SQL",
+    name: "QR-Based Restaurant Ordering System",
+    description: "In-progress full-stack QR ordering platform with real-time syncing via Firebase Firestore.",
     features: [
-      "Book cataloging and management",
-      "Member records tracking",
-      "Transaction tracking system",
-      "Fine management functionality"
+      "Customers scan table QR codes, browse a live menu, and place orders without page refresh",
+      "Real-time admin order queue with status controls and menu management",
+      "Protected admin portal secured with Firebase Authentication and React Router guards"
     ],
-    tech: ["Python", "SQL", "Database Design"]
+    tech: ["React", "Firebase", "Firestore", "Firebase Auth", "Admin Dashboard"]
   },
   {
-    name: "FlexxWell ",
-    description: "Responsive web application for workload planning",
+    name: "FlexxWell",
+    description: "Production React client-acquisition platform built and sold to a gym owner.",
     features: [
-      "Responsive web design",
-      "User login and authentication",
-      "Workload planning features",
+      "QR-driven flow converts offline foot traffic into demo bookings via Google Forms",
+      "Mobile-first UX optimized for on-phone scanning and quick conversion",
+      "Deployed on Vercel CDN for fast load times and reliable access"
     ],
-    tech: ["HTML", "CSS", "JavaScript"]
+    tech: ["React.js", "Vercel", "Google Forms", "QR Flow", "Responsive Design"]
+  },
+  {
+    name: "Library Management System",
+    description: "Desktop CRUD application built with Python, OOP, and MySQL.",
+    features: [
+      "Book cataloging and member management with issue/return tracking",
+      "Parameterized SQL queries used to prevent injection vulnerabilities",
+      "Structured modules for maintainable and extensible desktop workflow"
+    ],
+    tech: ["Python", "MySQL", "OOP", "CRUD"]
   }
 ];
 
 const skills = [
   { 
-    category: "Languages", 
+    category: "Frontend", 
     icon: "💻",
-    items: ["Python", "JavaScript", "SQL", "HTML", "CSS", "C", "C++", "Java"],
+    items: ["React.js", "JSX", "Hooks", "React Router", "JavaScript (ES6+)", "HTML5", "CSS3", "Bootstrap", "Responsive Design"],
     color: "cyan"
   },
   { 
-    category: "Web Tech", 
+    category: "Backend", 
     icon: "🌐",
-    items: ["HTML", "CSS", "MySQL", "JavaScript", "Replit", "APIs", "ChatGPT "],
+    items: ["Node.js", "Express.js", "REST APIs", "Firebase", "Firestore", "Firebase Auth", "Protected Routes", "Routing"],
     color: "green"
   },
   { 
-    category: "Tools", 
-    icon: "🛠️",
-    items: ["Figma", "MS Office", "Excel", "Workbench", "Replit", "Git", "PowerBI", "VS Code", "ChatGPT", "Github "],
+    category: "Database", 
+    icon: "🗄️",
+    items: ["MongoDB", "Firebase Firestore", "MySQL"],
     color: "purple"
   },
   { 
-    category: "Skills", 
-    icon: "🧠",
-    items: ["Data Analysis", "E-Commerce", "Problem Solving", "Communication", "Market Research", "Strategic Thinking"],
+    category: "Dev Tools", 
+    icon: "🛠️",
+    items: ["Git", "GitHub", "Vercel", "Postman", "Figma", "VS Code", "npm"],
     color: "pink"
+  },
+  { 
+    category: "Testing", 
+    icon: "🧠",
+    items: ["Manual Testing", "Test Case Design", "Regression Testing", "Usability Testing", "Bug Reporting"],
+    color: "orange"
   }
 ];
 
@@ -73,7 +100,8 @@ const colorMap = {
   cyan: "from-cyan-500 to-blue-500",
   green: "from-green-500 to-emerald-500",
   purple: "from-purple-500 to-pink-500",
-  pink: "from-pink-500 to-rose-500"
+  pink: "from-pink-500 to-rose-500",
+  orange: "from-orange-500 to-amber-500"
 };
 
 export function Experience() {
@@ -273,7 +301,7 @@ export function Experience() {
             </div>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
             {skills.map((skillGroup, index) => (
               <motion.div
                 key={index}

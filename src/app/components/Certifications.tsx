@@ -3,49 +3,34 @@ import { Award, BadgeCheck, ExternalLink } from "lucide-react";
 
 const certifications = [
   {
-    name: "GenAI Powered Data Analysis",
+    name: "Python Full Stack Developer",
+    issuer: "EduSkills / AICTE",
+    category: "Full Stack Development",
+  },
+  {
+    name: "Data Analytics Simulation",
+    issuer: "Deloitte Australia",
+    category: "Data Analytics",
+  },
+  {
+    name: "GenAI Powered Analytics",
     issuer: "Tata iQ",
-    category: "Data Science",
+    category: "Generative AI",
   },
   {
-    name: "Data Analytics Job Simulation",
-    issuer: "Deloitte Australia",
-    category: "Data Analysis",
+    name: "CCNA: Introduction to Networks",
+    issuer: "Cisco",
+    category: "Networking",
   },
   {
-    name: "Technology Job Simulation",
-    issuer: "Deloitte Australia",
-    category: "Computer Science",
+    name: "Technology Simulation",
+    issuer: "Deloitte",
+    category: "Technology",
   },
   {
-    name: "Entrepreneurship",
-    issuer: "NPTEL & IIT Madras",
-    category: "Business",
-  },
-  {
-    name: "Perl Training",
-    issuer: " Galgotias University",
-    category: "Web Development",
-  },
-  {
-    name: "Introduction to Networks",
-    issuer: "Computer Networking Academy",
-    category: "Network Administration/Management",
-  },
-  {
-    name: "Python Full Stack Developer Internship",
-    issuer: "Eduskills & AICTE",
-    category: "Programming",
-  },
-  {
-    name: "Introduction to Data Analytics",
+    name: "Data Analysis",
     issuer: "Simplilearn",
-    category: "Data Science",
-  },
-  {
-    name: "QA Tester",
-    issuer: "HyperCloud Digital Solutions",
-    category: "Web & Mobile App",
+    category: "Analytics",
   },
 ];
 
