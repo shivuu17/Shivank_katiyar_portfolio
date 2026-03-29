@@ -3,17 +3,17 @@ import { Briefcase, Code, Calendar, Sparkles, Zap, FolderGit2 } from 'lucide-rea
 
 const experiences = [
   {
-    role: "Freelance Web Developer",
+    role: "Freelance Data Analyst",
     company: "Self-Employed",
     period: "2024 - Present",
     type: "Freelance",
-    description: "Designed, developed, and deployed FlexxWell, a live React.js gym landing page with a QR-based customer acquisition flow.",
+    description: "Delivered data analysis and reporting support for client-facing projects, turning raw campaign and lead data into actionable insights.",
     achievements: [
-      "Built QR flow: customer scans QR -> visits landing page -> clicks Join -> submits Google Form for demo booking",
-      "Sold and delivered the product to a real gym owner; app is live on Vercel and used for lead generation",
-      "Handled full lifecycle independently: requirement gathering, Figma UI/UX, React development, deployment, and handover"
+      "Built KPI tracking for lead generation funnels to measure conversion rates across scan, click, and form-submission stages",
+      "Cleaned and structured campaign data for weekly performance reviews and decision-making",
+      "Created clear summary reports highlighting trends, drop-off points, and optimization opportunities"
     ],
-    tech: ["React.js", "JavaScript", "Figma", "Vercel", "Google Forms", "QR Workflow"]
+    tech: ["Excel", "Google Sheets", "SQL", "Data Cleaning", "Dashboarding", "KPI Analysis"]
   },
   {
     role: "QA Testing Intern",
@@ -32,66 +32,66 @@ const experiences = [
 
 const projects = [
   {
-    name: "QR-Based Restaurant Ordering System",
-    description: "In-progress full-stack QR ordering platform with real-time syncing via Firebase Firestore.",
+    name: "Restaurant Sales Analytics Dashboard",
+    description: "Interactive dashboard project focused on revenue trends, item-level performance, and peak-hour analysis.",
     features: [
-      "Customers scan table QR codes, browse a live menu, and place orders without page refresh",
-      "Real-time admin order queue with status controls and menu management",
-      "Protected admin portal secured with Firebase Authentication and React Router guards"
+      "Analyzed daily order data to identify top-selling items, low-performing categories, and demand patterns",
+      "Built filters for date range, category, and order value to support quick business decisions",
+      "Tracked repeat purchase behavior and average order value to improve retention strategy"
     ],
-    tech: ["React", "Firebase", "Firestore", "Firebase Auth", "Admin Dashboard"]
+    tech: ["SQL", "Excel", "Power BI", "Data Visualization", "KPI Tracking"]
   },
   {
-    name: "FlexxWell",
-    description: "Production React client-acquisition platform built and sold to a gym owner.",
+    name: "Lead Funnel Performance Analysis",
+    description: "Conversion-focused analytics case study for a gym lead acquisition workflow.",
     features: [
-      "QR-driven flow converts offline foot traffic into demo bookings via Google Forms",
-      "Mobile-first UX optimized for on-phone scanning and quick conversion",
-      "Deployed on Vercel CDN for fast load times and reliable access"
+      "Mapped complete lead journey from QR scan to form submission to pinpoint conversion drop-offs",
+      "Compared channel-wise performance and identified the highest-quality lead sources",
+      "Built reporting views for weekly conversion, acquisition efficiency, and trend monitoring"
     ],
-    tech: ["React.js", "Vercel", "Google Forms", "QR Flow", "Responsive Design"]
+    tech: ["Google Sheets", "Excel", "SQL", "Data Modeling", "Funnel Analysis"]
   },
   {
-    name: "Library Management System",
-    description: "Desktop CRUD application built with Python, OOP, and MySQL.",
+    name: "Library Operations Data Insights",
+    description: "Data analysis project using library issue/return records to improve catalog and member operations.",
     features: [
-      "Book cataloging and member management with issue/return tracking",
-      "Parameterized SQL queries used to prevent injection vulnerabilities",
-      "Structured modules for maintainable and extensible desktop workflow"
+      "Analyzed borrowing trends by genre, member segment, and time period",
+      "Created SQL queries to identify overdue patterns and high-demand inventory",
+      "Generated operational insights to support stock planning and circulation efficiency"
     ],
-    tech: ["Python", "MySQL", "OOP", "CRUD"]
+    tech: ["SQL", "MySQL", "Python", "Data Analysis", "Reporting"]
   }
 ];
 
 const skills = [
   { 
-    category: "Frontend", 
+    category: "Data Analysis", 
     icon: "💻",
-    items: ["React.js", "JSX", "Hooks", "React Router", "JavaScript (ES6+)", "HTML5", "CSS3", "Bootstrap", "Responsive Design"],
+    items: ["Data Cleaning", "Data Wrangling", "Exploratory Data Analysis", "Descriptive Statistics", "Trend Analysis", "KPI Tracking"],
     color: "cyan"
   },
   { 
-    category: "Backend", 
+    category: "BI & Visualization", 
     icon: "🌐",
-    items: ["Node.js", "Express.js", "REST APIs", "Firebase", "Firestore", "Firebase Auth", "Protected Routes", "Routing"],
+    items: ["Power BI", "Dashboard Design", "Report Building", "Data Storytelling", "Chart Selection", "Insight Communication"],
     color: "green"
   },
   { 
-    category: "Database", 
+    category: "Databases", 
     icon: "🗄️",
-    items: ["MongoDB", "Firebase Firestore", "MySQL"],
+    items: ["SQL", "MySQL", "Joins", "Aggregations", "CTEs", "Query Optimization"],
     color: "purple"
   },
   { 
-    category: "Dev Tools", 
+    category: "Tools", 
     icon: "🛠️",
-    items: ["Git", "GitHub", "Vercel", "Postman", "Figma", "VS Code", "npm"],
+    items: ["Excel", "Google Sheets", "Python", "Jupyter", "Git", "GitHub", "VS Code"],
     color: "pink"
   },
   { 
-    category: "Testing", 
+    category: "Quality & Validation", 
     icon: "🧠",
-    items: ["Manual Testing", "Test Case Design", "Regression Testing", "Usability Testing", "Bug Reporting"],
+    items: ["Data Validation", "Manual Testing", "Test Case Design", "Anomaly Detection", "QA Documentation", "Bug Reporting"],
     color: "orange"
   }
 ];

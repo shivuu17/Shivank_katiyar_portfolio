@@ -85,7 +85,7 @@ export function Hero() {
                   </div>
                   <div className="text-green-400">
                     <TerminalText
-                      text="MERN Stack Developer & BCA Final-Year Student"
+                      text="Data Analytics Enthusiast & BCA Final-Year Student"
                       delay={2000}
                     />
                   </div>
@@ -113,11 +113,11 @@ export function Hero() {
                 <div className="pl-2 sm:pl-4 text-gray-300 space-y-2 text-xs sm:text-sm">
                   <p className="flex items-start gap-2">
                     <Code2 className="w-3 h-3 sm:w-4 sm:h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
-                    <span>MERN Stack developer who has freelanced, shipped, and sold a live React web app to a real client</span>
+                    <span>Data analytics-focused problem solver with hands-on project delivery experience and a strong product mindset</span>
                   </p>
                   <p className="flex items-start gap-2">
                     <Cpu className="w-3 h-3 sm:w-4 sm:h-4 text-green-400 flex-shrink-0 mt-0.5" />
-                    <span>Currently building a QR-based restaurant ordering system with Firebase Firestore and real-time order management</span>
+                    <span>Currently building analytics dashboards and data workflows focused on business KPIs, customer behavior, and reporting automation</span>
                   </p>
                   <p className="flex items-start gap-2">
                     <Terminal className="w-3 h-3 sm:w-4 sm:h-4 text-purple-400 flex-shrink-0 mt-0.5" />
