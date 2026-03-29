@@ -1,11 +1,33 @@
 
   # Shivank Katiyar Portfolio
 
-  This is a code bundle for Shivank Katiyar Portfolio. The original project is available at https://www.figma.com/design/RyIckeoXAPgpeVEIwI7qoq/Shivank-Katiyar-Portfolio.
+  Personal developer portfolio website built with React, TypeScript, and Vite.
 
-  ## Running the code
+  ## About
 
-  Run `npm i` to install the dependencies.
+  This project showcases my work, experience, education, certifications, and contact information in a clean and responsive single-page portfolio.
 
-  Run `npm run dev` to start the development server.
+  ## Tech Stack
+
+  - React
+  - TypeScript
+  - Vite
+  - Tailwind CSS
+
+  ## Getting Started
+
+  1. Install dependencies:
+    npm install
+  2. Start the development server:
+    npm run dev
+
+  ## Build for Production
+
+  Run:
+  npm run build
+
+  ## Preview Production Build
+
+  Run:
+  npm run preview
   
