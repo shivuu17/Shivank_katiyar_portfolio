@@ -1,6 +1,12 @@
 import { useEffect, useRef } from 'react';
 
-export function MatrixRain() {
+type ThemeMode = 'dark' | 'light';
+
+type MatrixRainProps = {
+  theme: ThemeMode;
+};
+
+export function MatrixRain({ theme }: MatrixRainProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -25,15 +31,25 @@ export function MatrixRain() {
     function draw() {
       if (!ctx || !canvas) return;
       
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillStyle = theme === 'dark' ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.08)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = '#0F0';
+      ctx.fillStyle = theme === 'dark' ? '#0F0' : '#0f766e';
       ctx.font = fontSize + 'px monospace';
 
       for (let i = 0; i < drops.length; i++) {
         const text = chars[Math.floor(Math.random() * chars.length)];
-        ctx.fillStyle = i % 3 === 0 ? '#0F0' : i % 3 === 1 ? '#0CF' : '#F0F';
+        ctx.fillStyle = theme === 'dark'
+          ? i % 3 === 0
+            ? '#0F0'
+            : i % 3 === 1
+              ? '#0CF'
+              : '#F0F'
+          : i % 3 === 0
+            ? '#0f766e'
+            : i % 3 === 1
+              ? '#2563eb'
+              : '#7c3aed';
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
         if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
@@ -61,7 +77,7 @@ export function MatrixRain() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full pointer-events-none opacity-20 z-0"
+      className={theme === 'dark' ? 'fixed top-0 left-0 w-full h-full pointer-events-none opacity-20 z-0' : 'fixed top-0 left-0 w-full h-full pointer-events-none opacity-10 z-0'}
     />
   );
 }

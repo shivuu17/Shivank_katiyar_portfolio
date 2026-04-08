@@ -3,19 +3,6 @@ import { Briefcase, Code, Calendar, Sparkles, Zap, FolderGit2 } from 'lucide-rea
 
 const experiences = [
   {
-    role: "Freelance Data Analyst",
-    company: "Self-Employed",
-    period: "2024 - Present",
-    type: "Freelance",
-    description: "Delivered data analysis and reporting support for client-facing projects, turning raw campaign and lead data into actionable insights.",
-    achievements: [
-      "Built KPI tracking for lead generation funnels to measure conversion rates across scan, click, and form-submission stages",
-      "Cleaned and structured campaign data for weekly performance reviews and decision-making",
-      "Created clear summary reports highlighting trends, drop-off points, and optimization opportunities"
-    ],
-    tech: ["Excel", "Google Sheets", "SQL", "Data Cleaning", "Dashboarding", "KPI Analysis"]
-  },
-  {
     role: "QA Testing Intern",
     company: "HyperCloud Digital Solutions",
     period: "Jul 2025 - Oct 2025",
@@ -31,26 +18,6 @@ const experiences = [
 ];
 
 const projects = [
-  {
-    name: "Restaurant Sales Analytics Dashboard",
-    description: "Interactive dashboard project focused on revenue trends, item-level performance, and peak-hour analysis.",
-    features: [
-      "Analyzed daily order data to identify top-selling items, low-performing categories, and demand patterns",
-      "Built filters for date range, category, and order value to support quick business decisions",
-      "Tracked repeat purchase behavior and average order value to improve retention strategy"
-    ],
-    tech: ["SQL", "Excel", "Power BI", "Data Visualization", "KPI Tracking"]
-  },
-  {
-    name: "Lead Funnel Performance Analysis",
-    description: "Conversion-focused analytics case study for a gym lead acquisition workflow.",
-    features: [
-      "Mapped complete lead journey from QR scan to form submission to pinpoint conversion drop-offs",
-      "Compared channel-wise performance and identified the highest-quality lead sources",
-      "Built reporting views for weekly conversion, acquisition efficiency, and trend monitoring"
-    ],
-    tech: ["Google Sheets", "Excel", "SQL", "Data Modeling", "Funnel Analysis"]
-  },
   {
     name: "Library Operations Data Insights",
     description: "Data analysis project using library issue/return records to improve catalog and member operations.",
@@ -112,6 +79,7 @@ export function Experience() {
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
+          id="projects"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
