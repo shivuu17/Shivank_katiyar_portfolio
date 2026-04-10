@@ -16,20 +16,6 @@ const experiences = [
     tech: ["Manual Testing", "Test Case Design", "Regression Testing", "Usability Testing", "Bug Reporting"]
   }
 ];
-
-const projects = [
-  {
-    name: "Library Operations Data Insights",
-    description: "Data analysis project using library issue/return records to improve catalog and member operations.",
-    features: [
-      "Analyzed borrowing trends by genre, member segment, and time period",
-      "Created SQL queries to identify overdue patterns and high-demand inventory",
-      "Generated operational insights to support stock planning and circulation efficiency"
-    ],
-    tech: ["SQL", "MySQL", "Python", "Data Analysis", "Reporting"]
-  }
-];
-
 const skills = [
   { 
     category: "Data Analysis", 
@@ -79,7 +65,6 @@ export function Experience() {
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
-          id="projects"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -181,72 +166,6 @@ export function Experience() {
             </motion.div>
           ))}
         </div>
-
-        {/* Projects Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-6xl mx-auto mb-20"
-        >
-          <div className="text-center mb-12">
-            <div className="inline-block">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="h-px w-12 bg-gradient-to-r from-transparent to-purple-400"></div>
-                <FolderGit2 className="w-10 h-10 text-purple-400" />
-                <h3 className="text-4xl font-mono text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-                  projects[]
-                </h3>
-                <div className="h-px w-12 bg-gradient-to-l from-transparent to-purple-400"></div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -10, scale: 1.02 }}
-                className="relative group"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
-                
-                <div className="relative bg-gradient-to-br from-gray-900 to-gray-800 border border-purple-500/30 p-6 rounded-lg hover:border-purple-400 transition-all">
-                  <h4 className="text-2xl font-mono text-purple-400 mb-3">{project.name}</h4>
-                  <p className="text-gray-300 font-mono text-sm mb-4 border-l-2 border-purple-500 pl-4">
-                    {project.description}
-                  </p>
-                  
-                  <div className="space-y-2 mb-4">
-                    {project.features.map((feature, i) => (
-                      <div key={i} className="flex items-start gap-2 text-gray-400 font-mono text-xs">
-                        <span className="text-purple-400">•</span>
-                        <span>{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech, i) => (
-                      <motion.span
-                        key={i}
-                        whileHover={{ scale: 1.1 }}
-                        className="px-2 py-1 bg-black/50 text-purple-300 rounded text-xs font-mono border border-purple-700 hover:border-purple-400 transition-all"
-                      >
-                        {tech}
-                      </motion.span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
 
         {/* Skills Section */}
         <motion.div
