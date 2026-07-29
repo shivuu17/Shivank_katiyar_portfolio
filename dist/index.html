@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shivank Katiyar — Frontend Developer</title>
+  <meta name="description" content="Shivank Katiyar — Frontend Developer building precise, high-quality digital experiences."/>
+  <link rel="icon" type="image/png" href="/favicon.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Space+Mono&display=swap" rel="stylesheet"/>
+
+<style>
+:root {
+  --bg:       #0a0a0a;
+  --surface:  #111111;
+  --card:     #141414;
+  --line:     rgba(255,255,255,0.09);
+  --text:     #f5f5f7;
+  --muted:    rgba(245,245,247,0.65);  /* was .44 — now clearly readable */
+  --faint:    rgba(245,245,247,0.35);  /* was .12 — now visible */
+  --accent:   #2997ff;
+  --accent-d: rgba(41,151,255,0.12);
+  --sans:     'Inter', system-ui, -apple-system, sans-serif;
+  --mono:     'Space Mono', monospace;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  cursor: none;
+}
+
+/* ── CURSOR ────────────────────── */
+#c-dot {
+  width:6px; height:6px;
+  background:var(--text);
+  border-radius:50%;
+  position:fixed; top:0; left:0;
+  transform:translate(-50%,-50%);
+  pointer-events:none; z-index:9999;
+  transition:width .25s, height .25s, background .25s;
+}
+#c-ring {
+  width:32px; height:32px;
+  border:1px solid rgba(245,245,247,0.25);
+  border-radius:50%;
+  position:fixed; top:0; left:0;
+  transform:translate(-50%,-50%);
+  pointer-events:none; z-index:9998;
+  transition:width .3s, height .3s, border-color .3s;
+}
+body.hov #c-dot  { width:4px; height:4px; background:var(--accent); }
+body.hov #c-ring { width:48px; height:48px; border-color:rgba(41,151,255,0.45); }
+
+/* ── PROGRESS ──────────────────── */
+#bar {
+  position:fixed; top:0; left:0; height:1px;
+  background:var(--accent); z-index:1000; width:0%;
+}
+
+/* ── SCROLLBAR ─────────────────── */
+::-webkit-scrollbar { width:2px; }
+::-webkit-scrollbar-track { background:var(--bg); }
+::-webkit-scrollbar-thumb { background:rgba(41,151,255,0.4); }
+
+/* ── NAV ───────────────────────── */
+nav {
+  position:fixed; inset:0 0 auto 0; z-index:900;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:32px 72px;
+  transition:padding .4s, backdrop-filter .4s, border-color .4s;
+  border-bottom:1px solid transparent;
+}
+nav.s {
+  padding:18px 72px;
+  backdrop-filter:blur(24px);
+  background:rgba(10,10,10,0.82);
+  border-bottom-color:var(--line);
+}
+.logo {
+  display:flex; align-items:center; gap:12px;
+  text-decoration:none;
+}
+.logo-img {
+  height:32px; width:32px;
+  object-fit:contain;
+  border-radius:3px;
+  transition:opacity .25s; flex-shrink:0;
+}
+.logo-img:hover { opacity:.8; }
+.logo-name {
+  font-family:var(--sans); font-size:.82rem; font-weight:400;
+  letter-spacing:.04em; color:var(--text);
+  white-space:nowrap;
+}
+.logo-dot { display:none; }
+.nav-r { display:flex; align-items:center; gap:48px; }
+.nav-links { display:flex; gap:36px; list-style:none; }
+.nav-links a {
+  font-size:.78rem; letter-spacing:.04em; color:var(--muted);
+  text-decoration:none; transition:color .25s;
+}
+.nav-links a:hover { color:var(--text); }
+.nav-cv {
+  font-family:var(--mono); font-size:.68rem; letter-spacing:.08em;
+  color:var(--accent); border:1px solid rgba(41,151,255,.3);
+  padding:8px 20px; text-decoration:none; transition:all .25s;
+}
+.nav-cv:hover { background:var(--accent-d); border-color:var(--accent); }
+.ham { display:none; flex-direction:column; gap:4px; cursor:pointer; }
+.ham span { display:block; width:22px; height:1px; background:var(--muted); transition:all .3s; }
+
+/* ── MOBILE NAV ────────────────── */
+.mob {
+  display:none; position:fixed; inset:0;
+  background:rgba(10,10,10,.97); z-index:800;
+  flex-direction:column; align-items:center; justify-content:center; gap:44px;
+}
+.mob.on { display:flex; }
+.mob a { font-size:2.8rem; font-weight:200; color:var(--text); text-decoration:none; letter-spacing:-.02em; transition:color .25s; }
+.mob a:hover { color:var(--accent); }
+.mob-x { position:absolute; top:28px; right:28px; font-size:1.5rem; color:var(--muted); cursor:pointer; transition:color .25s; }
+.mob-x:hover { color:var(--text); }
+
+/* ── HERO ──────────────────────── */
+#hero {
+  height:100vh;
+  max-height:100vh;
+  display:grid;
+  grid-template-rows: 1fr auto;
+  padding:0;
+  position:relative; overflow:hidden;
+}
+
+/* Ambient glow blobs */
+.blob {
+  position:absolute; border-radius:50%; filter:blur(140px);
+  pointer-events:none; z-index:0; opacity:0;
+  animation:blobIn 2.5s 0.6s forwards;
+}
+.blob-1 {
+  width:700px; height:700px;
+  background:radial-gradient(circle, rgba(41,151,255,.13) 0%, transparent 65%);
+  top:-200px; right:-150px;
+}
+.blob-2 {
+  width:500px; height:500px;
+  background:radial-gradient(circle, rgba(41,151,255,.07) 0%, transparent 65%);
+  bottom:-50px; left:-100px;
+}
+@keyframes blobIn { to { opacity:1; } }
+
+/* Hero main content area — 2 col split */
+.hero-main {
+  display:grid;
+  grid-template-columns:1fr 340px;
+  align-items:center;
+  gap:48px;
+  padding:72px 72px 32px;
+  position:relative; z-index:2;
+  width:100%; max-width:1400px;
+  overflow:hidden;
+}
+.hero-left { display:flex; flex-direction:column; }
+.hero-right {
+  display:flex; flex-direction:column; align-items:flex-end;
+  opacity:0; animation:up 1s .6s forwards;
+}
+
+/* Profile photo */
+.hero-photo-wrap {
+  position:relative; width:100%; max-width:320px;
+}
+.hero-photo {
+  width:100%; aspect-ratio:2/3;
+  overflow:hidden;
+  clip-path:polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+}
+.hero-photo img {
+  width:100%; height:100%;
+  object-fit:cover; object-position:top center;
+  filter:grayscale(15%) contrast(1.08);
+  transition:filter .6s, transform .8s;
+}
+.hero-photo:hover img { filter:grayscale(0%); transform:scale(1.03); }
+/* accent corner lines */
+.hero-photo-wrap::before {
+  content:'';
+  position:absolute; top:-10px; left:-10px;
+  width:60px; height:60px;
+  border-top:1.5px solid var(--accent);
+  border-left:1.5px solid var(--accent);
+  pointer-events:none; z-index:3;
+}
+.hero-photo-wrap::after {
+  content:'';
+  position:absolute; bottom:-10px; right:-10px;
+  width:60px; height:60px;
+  border-bottom:1.5px solid var(--accent);
+  border-right:1.5px solid var(--accent);
+  pointer-events:none; z-index:3;
+}
+.hero-badge {
+  position:absolute; bottom:24px; left:-28px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  padding:14px 18px;
+  font-family:var(--mono); z-index:4;
+}
+.hero-badge-val { font-size:1.4rem; font-weight:200; color:var(--text); letter-spacing:-.03em; line-height:1; }
+.hero-badge-val em { font-style:normal; color:var(--accent); }
+.hero-badge-lbl { font-size:.55rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-top:4px; }
+
+/* Eyebrow */
+.hero-label {
+  font-family:var(--mono); font-size:.62rem; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--accent);
+  display:flex; align-items:center; gap:12px;
+  margin-bottom:18px;
+  opacity:0; animation:up .7s .2s forwards;
+}
+.hero-label::before {
+  content:'';
+  display:inline-block; width:28px; height:1px;
+  background:var(--accent);
+}
+
+/* Name */
+.hero-name {
+  font-size:clamp(2.8rem, 6vw, 7rem);
+  font-weight:200; line-height:.9;
+  letter-spacing:-.04em; color:var(--text);
+  margin-bottom:0;
+  opacity:0; animation:up 1s .4s forwards;
+}
+.hero-name .stroke {
+  -webkit-text-stroke:1.5px rgba(245,245,247,.18);
+  color:transparent; display:block;
+}
+.hero-name .solid { display:block; }
+
+/* Divider line */
+.hero-rule {
+  width:0; height:1px;
+  background:linear-gradient(to right, var(--accent), transparent);
+  margin:18px 0;
+  animation:ruleGrow 1s .9s cubic-bezier(.16,1,.3,1) forwards;
+}
+@keyframes ruleGrow { to { width:100%; } }
+
+/* Bottom row */
+.hero-bottom {
+  display:flex; align-items:center; gap:24px; flex-wrap:wrap;
+  opacity:0; animation:up .8s 1s forwards;
+}
+.hero-desc {
+  font-size:.9rem; color:var(--muted);
+  max-width:440px; line-height:1.75;
+}
+.hero-desc strong { color:var(--text); font-weight:400; }
+.hero-actions {
+  display:flex; gap:12px; align-items:center;
+  flex-shrink:0; flex-wrap:wrap;
+}
+.btn-a {
+  display:inline-flex; align-items:center; gap:9px;
+  font-size:.75rem; letter-spacing:.05em; font-weight:400;
+  background:var(--accent); color:#fff;
+  padding:11px 24px; text-decoration:none;
+  border-radius:2px; transition:all .25s; white-space:nowrap;
+}
+.btn-a:hover { background:#1a82e8; transform:translateY(-2px); box-shadow:0 8px 32px rgba(41,151,255,.3); }
+.btn-b {
+  font-family:var(--mono); font-size:.6rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--muted); text-decoration:none;
+  transition:color .25s; display:flex; align-items:center; gap:8px;
+  white-space:nowrap; border:1px solid var(--line); padding:10px 18px;
+  border-radius:2px;
+}
+.btn-b:hover { color:var(--text); border-color:rgba(245,245,247,.2); }
+
+/* Metrics strip at bottom of hero */
+.hero-strip {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--line);
+  position:relative; z-index:2;
+  opacity:0; animation:up .8s 1.3s forwards;
+}
+.hero-strip-item {
+  padding:18px 32px;
+  border-right:1px solid var(--line);
+  transition:background .3s;
+}
+.hero-strip-item:last-child { border-right:none; }
+.hero-strip-item:hover { background:var(--surface); }
+.h-strip-val {
+  font-size:1.5rem; font-weight:200; color:var(--text);
+  letter-spacing:-.03em; line-height:1; margin-bottom:3px;
+}
+.h-strip-val em { font-style:normal; color:var(--accent); }
+.h-strip-label {
+  font-family:var(--mono); font-size:.55rem;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--muted);
+}
+
+@keyframes slide { to { left:100%; } }
+
+/* ── WRAPPER ────────────────────── */
+.w { max-width:1300px; margin:0 auto; padding:120px 72px; box-sizing:border-box; }
+.w-sm { max-width:1300px; margin:0 auto; padding:0 72px; }
+
+/* ── SECTION LABEL ──────────────── */
+.s-label {
+  display:flex; align-items:center; gap:20px;
+  font-family:var(--mono); font-size:.62rem;
+  letter-spacing:.22em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:80px;
+}
+.s-label::before { content:''; flex:1; height:1px; background:var(--line); }
+.s-label::after  { content:''; width:6px; height:6px; border-radius:50%; background:var(--accent); flex-shrink:0; }
+
+/* ── ABOUT ──────────────────────── */
+#about { border-top:1px solid var(--line); }
+.about-grid { display:grid; grid-template-columns:5fr 4fr; gap:80px; align-items:start; }
+.about-lede {
+  font-size:clamp(1.6rem, 3.5vw, 2.8rem); font-weight:200;
+  letter-spacing:-.02em; line-height:1.22; color:var(--text);
+  margin-bottom:40px;
+}
+.about-lede .acc { color:var(--accent); }
+.about-p { font-size:.95rem; color:var(--muted); line-height:1.85; margin-bottom:16px; }
+.stat-row { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:56px; }
+.stat-c { padding:28px 22px; background:var(--bg); transition:background .3s; }
+.stat-c:hover { background:var(--card); }
+.stat-n { font-size:2.6rem; font-weight:200; color:var(--text); letter-spacing:-.03em; line-height:1; margin-bottom:6px; }
+.stat-n .acc { color:var(--accent); }
+.stat-t { font-family:var(--mono); font-size:.58rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
+
+.about-right { padding-top:6px; }
+.about-photo {
+  width:100%; aspect-ratio:3/4; overflow:hidden;
+  position:relative;
+}
+.about-photo img {
+  width:100%; height:100%; object-fit:cover; object-position:center top;
+  filter:grayscale(10%) contrast(1.05) brightness(0.92);
+  transition:filter .6s, transform .8s;
+}
+.about-photo:hover img { filter:grayscale(0%) contrast(1.02) brightness(0.97); transform:scale(1.03); }
+.about-photo::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(to bottom, transparent 60%, var(--bg) 100%);
+  pointer-events:none;
+}
+.about-name-tag {
+  margin-top:24px;
+  font-family:var(--mono); font-size:.68rem; letter-spacing:.15em;
+  color:var(--muted); display:flex; justify-content:space-between;
+}
+
+/* ── SKILLS ─────────────────────── */
+#skills { border-top:1px solid var(--line); }
+.skills-intro { font-size:clamp(2rem,4vw,3.8rem); font-weight:200; letter-spacing:-.03em; color:var(--text); margin-bottom:60px; line-height:1.1; }
+.skills-intro em { font-style:normal; color:var(--accent); }
+.skills-table { width:100%; border-collapse:collapse; table-layout:fixed; }
+.skills-table tr { border-bottom:1px solid var(--line); }
+.skills-table tr:first-child { border-top:1px solid var(--line); }
+.skills-table td { padding:28px 0; vertical-align:top; word-break:break-word; }
+.skills-table td:first-child {
+  font-family:var(--mono); font-size:.62rem; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--muted); width:180px; padding-top:30px;
+}
+.s-tags { display:flex; flex-wrap:wrap; gap:8px; }
+.s-tag {
+  font-size:.8rem; color:var(--muted);
+  background:var(--card); border:1px solid var(--line);
+  padding:6px 14px; border-radius:2px;
+  transition:all .2s; letter-spacing:.02em;
+}
+.s-tag:hover { color:var(--text); border-color:rgba(41,151,255,.3); background:var(--accent-d); }
+
+/* ── PROJECTS ───────────────────── */
+#projects { border-top:1px solid var(--line); }
+.proj-top { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:60px; }
+.proj-h { font-size:clamp(2rem,4vw,3.8rem); font-weight:200; letter-spacing:-.03em; color:var(--text); line-height:1.1; }
+.proj-h em { font-style:normal; color:var(--accent); }
+.proj-count { font-family:var(--mono); font-size:.62rem; letter-spacing:.12em; color:var(--muted); }
+
+.proj-grid { display:grid; gap:1px; background:var(--line); border:1px solid var(--line); }
+.proj-card {
+  display:grid; grid-template-columns:64px 1fr 48px;
+  gap:32px; align-items:center;
+  padding:36px 36px;
+  background:var(--bg);
+  text-decoration:none;
+  transition:background .3s;
+  position:relative; overflow:hidden;
+}
+.proj-card::before {
+  content:''; position:absolute; left:0; top:0; bottom:0; width:2px;
+  background:var(--accent); transform:scaleY(0); transform-origin:bottom;
+  transition:transform .4s cubic-bezier(.16,1,.3,1);
+}
+.proj-card:hover { background:var(--card); }
+.proj-card:hover::before { transform:scaleY(1); }
+.p-num { font-family:var(--mono); font-size:.62rem; letter-spacing:.1em; color:var(--muted); }
+.p-body { min-width:0; }
+.p-title { font-size:1.25rem; font-weight:400; color:var(--text); letter-spacing:-.01em; margin-bottom:8px; transition:color .25s; }
+.proj-card:hover .p-title { color:var(--accent); }
+.p-desc { font-size:.85rem; color:var(--muted); line-height:1.7; margin-bottom:14px; }
+.p-pills { display:flex; flex-wrap:wrap; gap:6px; }
+.p-pill { font-family:var(--mono); font-size:.58rem; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); border:1px solid var(--line); padding:3px 9px; }
+.p-arr {
+  width:36px; height:36px; border:1px solid var(--line); border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.9rem; color:var(--muted); transition:all .3s; flex-shrink:0;
+}
+.proj-card:hover .p-arr { border-color:var(--accent); color:var(--accent); transform:rotate(45deg); }
+
+/* ── EDUCATION ──────────────────── */
+#education { border-top:1px solid var(--line); }
+.edu-h { font-size:clamp(2rem,4vw,3.8rem); font-weight:200; letter-spacing:-.03em; color:var(--text); margin-bottom:60px; line-height:1.1; }
+.edu-h em { font-style:normal; color:var(--accent); }
+.edu-grid { display:flex; flex-direction:column; }
+.edu-row {
+  display:grid; grid-template-columns:180px 1fr; gap:48px;
+  padding:52px 0; border-bottom:1px solid var(--line);
+  position:relative;
+}
+.edu-row::after { content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--accent); transition:width .6s cubic-bezier(.16,1,.3,1); }
+.edu-row:hover::after { width:100%; }
+.edu-meta { }
+.edu-yr { font-family:var(--mono); font-size:.62rem; letter-spacing:.16em; color:var(--accent); margin-bottom:8px; }
+.edu-school { font-size:.82rem; color:var(--muted); line-height:1.5; }
+.edu-deg { font-size:1.5rem; font-weight:300; letter-spacing:-.02em; color:var(--text); margin-bottom:10px; line-height:1.2; }
+.edu-p { font-size:.88rem; color:var(--muted); line-height:1.75; margin-bottom:20px; }
+.edu-tags { display:flex; flex-wrap:wrap; gap:7px; }
+.edu-t { font-family:var(--mono); font-size:.58rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); border:1px solid var(--line); padding:4px 10px; }
+
+/* ── CONTACT ────────────────────── */
+#contact { border-top:1px solid var(--line); text-align:center; }
+.ct-h {
+  font-size:clamp(3rem, 9vw, 9rem); font-weight:200;
+  letter-spacing:-.04em; color:var(--text); line-height:.9;
+  margin-bottom:32px;
+}
+.ct-h em { font-style:normal; color:var(--accent); }
+.ct-sub { font-size:.95rem; color:var(--muted); max-width:360px; margin:0 auto 48px; line-height:1.8; }
+.ct-email {
+  display:inline-block; font-size:clamp(1rem, 2.5vw, 1.6rem);
+  font-weight:300; letter-spacing:-.01em; color:var(--accent);
+  text-decoration:none; margin-bottom:56px;
+  border-bottom:1px solid rgba(41,151,255,.3); padding-bottom:4px;
+  transition:border-color .25s;
+}
+.ct-email:hover { border-color:var(--accent); }
+.ct-links { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; }
+.ct-link {
+  display:flex; align-items:center; gap:9px;
+  font-family:var(--mono); font-size:.62rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--muted); text-decoration:none;
+  border:1px solid var(--line); padding:12px 24px; border-radius:2px;
+  transition:all .25s;
+}
+.ct-link:hover { color:var(--text); border-color:rgba(41,151,255,.3); background:var(--accent-d); }
+
+/* ── FOOTER ─────────────────────── */
+footer {
+  border-top:1px solid var(--line); padding:28px 72px;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.ft { font-family:var(--mono); font-size:.58rem; letter-spacing:.14em; color:var(--muted); }
+.ft a { color:var(--accent); text-decoration:none; }
+.ft-dot { display:inline-block; width:5px; height:5px; background:var(--accent); border-radius:50%; margin:0 10px; vertical-align:middle; }
+
+/* ── REVEAL ─────────────────────── */
+.rv { opacity:0; transform:translateY(28px); transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+.rv.in { opacity:1; transform:none; }
+.rv.d1 { transition-delay:.08s; }
+.rv.d2 { transition-delay:.16s; }
+.rv.d3 { transition-delay:.24s; }
+.rv.d4 { transition-delay:.32s; }
+.rv.d5 { transition-delay:.40s; }
+
+/* ── KEYFRAMES ──────────────────── */
+@keyframes up { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:none} }
+
+/* ── RESPONSIVE ─────────────────── */
+@media(max-width:960px){
+  nav { padding:22px 28px; }
+  nav.s { padding:14px 28px; }
+  .nav-links,.nav-cv { display:none; }
+  .ham { display:flex; }
+  .hero-main { grid-template-columns:1fr; padding:100px 28px 36px; gap:40px; }
+  .hero-right { align-items:center; }
+  .hero-photo-wrap { max-width:260px; }
+  .hero-badge { left:-16px; }
+  .hero-strip { grid-template-columns:repeat(2,1fr); }
+  .hero-strip-item { padding:20px 24px; }
+  .hero-bottom { grid-template-columns:1fr; gap:28px; }
+  .hero-actions { flex-direction:row; flex-wrap:wrap; }
+  .w { padding:100px 28px; }
+  .about-grid { grid-template-columns:1fr; gap:52px; }
+  .about-right { order:-1; max-width:340px; }
+  .stat-row { grid-template-columns:repeat(3,1fr); }
+  .skills-table td:first-child { width:130px; }
+  .proj-card { grid-template-columns:40px 1fr; gap:20px; padding:28px 20px; }
+  .p-arr { display:none; }
+  .proj-top { flex-direction:column; align-items:flex-start; gap:12px; }
+  .edu-row { grid-template-columns:1fr; gap:20px; }
+  .ct-h { font-size:clamp(3rem,16vw,6rem); }
+  footer { padding:22px 28px; flex-direction:column; gap:10px; text-align:center; }
+}
+@media(max-width:600px){
+  .hero-strip { grid-template-columns:1fr 1fr; }
+  .stat-row { grid-template-columns:1fr 1fr; }
+  .skills-table { display:block; }
+  .skills-table tbody { display:block; }
+  .skills-table tr { display:block; border-bottom:1px solid var(--line); }
+  .skills-table td { display:block; width:100% !important; }
+  .skills-table td:first-child { padding-bottom:0; padding-top:28px; }
+  .skills-table td:last-child { padding-top:14px; padding-bottom:28px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- cursor -->
+<div id="c-dot"></div>
+<div id="c-ring"></div>
+<!-- progress -->
+<div id="bar"></div>
+
+<!-- mobile nav -->
+<div class="mob" id="mob">
+  <div class="mob-x" onclick="closeMob()">✕</div>
+  <a href="#about"     onclick="closeMob()">About</a>
+  <a href="#skills"    onclick="closeMob()">Skills</a>
+  <a href="#projects"  onclick="closeMob()">Work</a>
+  <a href="#education" onclick="closeMob()">Education</a>
+  <a href="#contact"   onclick="closeMob()">Contact</a>
+</div>
+
+<!-- nav -->
+<nav id="nav">
+  <a href="#" class="logo"><img src="/sk-logo.png" alt="SK" class="logo-img"/><span class="logo-name">Shivank Katiyar</span></a>
+  <div class="nav-r">
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Work</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="/RESUME_SHIVANK_KATIYAR.pdf" download class="nav-cv">Resume ↓</a>
+  </div>
+  <div class="ham" id="ham" onclick="toggleMob()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <div class="hero-main">
+    <!-- LEFT: text content -->
+    <div class="hero-left">
+      <p class="hero-label" id="label-type"></p>
+
+      <h1 class="hero-name">
+        <span class="solid">SHIVANK</span>
+        <span class="stroke">KATIYAR</span>
+      </h1>
+
+      <div class="hero-rule"></div>
+
+      <div class="hero-bottom">
+        <p class="hero-desc">
+          <strong>Frontend Developer</strong> based in India —
+          building fast, precise digital products with React,
+          Firebase, and the modern web stack.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-a">
+            See my work
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#contact" class="btn-b">Get in touch ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: profile photo -->
+    <div class="hero-right">
+      <div class="hero-photo-wrap">
+        <div class="hero-photo">
+          <img src="/profile-picture.jpg" alt="Shivank Katiyar"/>
+        </div>
+        <div class="hero-badge">
+          <div class="hero-badge-val">4<em>+</em></div>
+          <div class="hero-badge-lbl">Live Projects</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Metrics strip pinned to bottom -->
+  <div class="hero-strip">
+    <div class="hero-strip-item">
+      <div class="h-strip-val"><span data-count="4">0</span><em>+</em></div>
+      <div class="h-strip-label">Live Projects</div>
+    </div>
+    <div class="hero-strip-item">
+      <div class="h-strip-val"><span data-count="3">0</span><em>yr</em></div>
+      <div class="h-strip-label">Experience</div>
+    </div>
+    <div class="hero-strip-item">
+      <div class="h-strip-val">10<em>+</em></div>
+      <div class="h-strip-label">Technologies</div>
+    </div>
+    <div class="hero-strip-item">
+      <div class="h-strip-val">100<em>%</em></div>
+      <div class="h-strip-label">Committed</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="w">
+    <div class="s-label rv">01 &mdash; About</div>
+    <div class="about-grid">
+      <div>
+        <h2 class="about-lede rv d1">
+          Final-year developer.<br>
+          Ships real products.<br>
+          <span class="acc">Zero fluff.</span>
+        </h2>
+        <p class="about-p rv d2">
+          I'm a final-year BCA student at Galgotias University with a simple obsession:
+          building digital products that are clean, fast, and genuinely useful.
+          Not demos. Not tutorials. Real, live, production apps.
+        </p>
+        <p class="about-p rv d3">
+          From gym management dashboards to district news portals — every project
+          I ship is built with attention to craft, performance, and user experience.
+          I care deeply about the details that most people skip.
+        </p>
+        <div class="stat-row rv d4">
+          <div class="stat-c">
+            <div class="stat-n"><span data-count="4">0</span></div>
+            <div class="stat-t">Live Projects</div>
+          </div>
+          <div class="stat-c">
+            <div class="stat-n"><span data-count="3">0</span></div>
+            <div class="stat-t">Years Coding</div>
+          </div>
+          <div class="stat-c">
+            <div class="stat-n">10<span class="acc">+</span></div>
+            <div class="stat-t">Technologies</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-right rv d2">
+        <div class="about-photo">
+          <img src="/about-photo.jpg" alt="Shivank Katiyar"/>
+        </div>
+        <div class="about-name-tag">
+          <span>Shivank Katiyar</span>
+          <span style="color:var(--accent)">Available</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ── -->
+<section id="skills">
+  <div class="w">
+    <div class="s-label rv">02 &mdash; Skills</div>
+    <h2 class="skills-intro rv d1">
+      The <em>tools</em> I use<br>to build what matters.
+    </h2>
+    <table class="skills-table rv d2">
+      <tbody>
+        <tr>
+          <td>Frontend</td>
+          <td>
+            <div class="s-tags">
+              <span class="s-tag">React 18 / 19</span>
+              <span class="s-tag">TypeScript</span>
+              <span class="s-tag">JavaScript ES6+</span>
+              <span class="s-tag">Vite</span>
+              <span class="s-tag">HTML5</span>
+              <span class="s-tag">CSS3</span>
+              <span class="s-tag">Tailwind CSS</span>
+              <span class="s-tag">Responsive Design</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Backend / DB</td>
+          <td>
+            <div class="s-tags">
+              <span class="s-tag">Firebase</span>
+              <span class="s-tag">Firestore</span>
+              <span class="s-tag">Firebase Auth</span>
+              <span class="s-tag">Firebase Hosting</span>
+              <span class="s-tag">Cloudinary</span>
+              <span class="s-tag">Zod</span>
+              <span class="s-tag">REST APIs</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>UI / Motion</td>
+          <td>
+            <div class="s-tags">
+              <span class="s-tag">Framer Motion</span>
+              <span class="s-tag">Recharts</span>
+              <span class="s-tag">MUI</span>
+              <span class="s-tag">Radix UI</span>
+              <span class="s-tag">Glassmorphism</span>
+              <span class="s-tag">Dark Mode</span>
+              <span class="s-tag">Vercel</span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section id="projects">
+  <div class="w">
+    <div class="s-label rv">03 &mdash; Selected Work</div>
+    <div class="proj-top rv d1">
+      <h2 class="proj-h">Things I've <em>built</em><br>and shipped.</h2>
+      <span class="proj-count">04 projects</span>
+    </div>
+    <div class="proj-grid rv d2">
+
+      <a href="https://sk-body-first-gym.web.app/" target="_blank" rel="noopener noreferrer" class="proj-card">
+        <div class="p-num">01</div>
+        <div class="p-body">
+          <h3 class="p-title">SK Body First Gym</h3>
+          <p class="p-desc">Full-stack gym management platform with real-time lead syncing, KPI analytics dashboards (pie / bar / radar), dual goal/status filters, and Firebase Auth secured admin panel.</p>
+          <div class="p-pills">
+            <span class="p-pill">React 18</span><span class="p-pill">Vite</span>
+            <span class="p-pill">Firebase</span><span class="p-pill">Recharts</span><span class="p-pill">Firestore</span>
+          </div>
+        </div>
+        <div class="p-arr">↗</div>
+      </a>
+
+      <a href="https://getfit-academy.web.app/" target="_blank" rel="noopener noreferrer" class="proj-card">
+        <div class="p-num">02</div>
+        <div class="p-body">
+          <h3 class="p-title">GetFit Academy</h3>
+          <p class="p-desc">Fitness academy site with multi-step member join-flow modal, Firestore lead storage, and admin panel for lead tracking and member onboarding coordination.</p>
+          <div class="p-pills">
+            <span class="p-pill">React.js</span><span class="p-pill">Firebase Firestore</span>
+            <span class="p-pill">Framer Motion</span><span class="p-pill">Firebase Hosting</span>
+          </div>
+        </div>
+        <div class="p-arr">↗</div>
+      </a>
+
+      <a href="https://apna-farrukhabad.web.app/" target="_blank" rel="noopener noreferrer" class="proj-card">
+        <div class="p-num">03</div>
+        <div class="p-body">
+          <h3 class="p-title">ApnaFarrukhabad</h3>
+          <p class="p-desc">District news portal with email-verified citizen reporting, Cloudinary image uploads, admin moderation queue, live mandi prices, and real-time weather alerts.</p>
+          <div class="p-pills">
+            <span class="p-pill">React 19</span><span class="p-pill">Firebase</span>
+            <span class="p-pill">Cloudinary</span><span class="p-pill">Zod</span><span class="p-pill">Firebase Auth</span>
+          </div>
+        </div>
+        <div class="p-arr">↗</div>
+      </a>
+
+      <a href="#" class="proj-card">
+        <div class="p-num">04</div>
+        <div class="p-body">
+          <h3 class="p-title">AK Global Solutions</h3>
+          <p class="p-desc">Premium property management site — glassmorphism UI, typewriter hero, dark/light mode, portfolio grid, tiered pricing. Dual-deployed on Vercel + Firebase.</p>
+          <div class="p-pills">
+            <span class="p-pill">React</span><span class="p-pill">Tailwind CSS</span>
+            <span class="p-pill">Framer Motion</span><span class="p-pill">Firebase</span><span class="p-pill">Vercel</span>
+          </div>
+        </div>
+        <div class="p-arr">↗</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── EDUCATION ── -->
+<section id="education">
+  <div class="w">
+    <div class="s-label rv">04 &mdash; Education</div>
+    <h2 class="edu-h rv d1">Where I <em>learned</em><br>to build.</h2>
+    <div class="edu-grid">
+      <div class="edu-row rv d2">
+        <div class="edu-meta">
+          <div class="edu-yr">2023 — 2026</div>
+          <div class="edu-school">Galgotias University<br>Greater Noida · Final Year</div>
+        </div>
+        <div>
+          <h3 class="edu-deg">Bachelor of Computer Applications</h3>
+          <p class="edu-p">Full-stack development focus. Applied classroom concepts through freelancing and real product delivery. Built foundations in software engineering, web development, and testing.</p>
+          <div class="edu-tags">
+            <span class="edu-t">Web Development</span>
+            <span class="edu-t">Software Engineering</span>
+            <span class="edu-t">DBMS</span>
+            <span class="edu-t">Computer Networks</span>
+            <span class="edu-t">Software Testing</span>
+          </div>
+        </div>
+      </div>
+      <div class="edu-row rv d3">
+        <div class="edu-meta">
+          <div class="edu-yr">2022 — 2023</div>
+          <div class="edu-school">GD Goenka Global School<br>Noida · CBSE</div>
+        </div>
+        <div>
+          <h3 class="edu-deg">Class 12th — CBSE</h3>
+          <p class="edu-p">Strong foundation in Computer Science and Mathematics. Prepared the academic base for deeper specialization in computing and software development.</p>
+          <div class="edu-tags">
+            <span class="edu-t">Computer Science</span>
+            <span class="edu-t">Mathematics</span>
+            <span class="edu-t">English</span>
+            <span class="edu-t">Business Studies</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="w" style="text-align:center;padding-bottom:120px;">
+    <div class="s-label rv" style="justify-content:center;margin-bottom:56px;">05 &mdash; Contact</div>
+    <h2 class="ct-h rv d1">Have an idea?<br><em>Let's talk.</em></h2>
+    <p class="ct-sub rv d2">Whether you have a project in mind or just want to say hello — I'd love to hear from you.</p>
+    <a href="mailto:katiyarshivank927@gmail.com" class="ct-email rv d3">katiyarshivank927@gmail.com</a>
+    <div class="ct-links rv d4">
+      <a href="https://github.com/Shivuu17" target="_blank" rel="noopener noreferrer" class="ct-link">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/shivank-katiyar-a7b764291" target="_blank" rel="noopener noreferrer" class="ct-link">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a href="mailto:katiyarshivank927@gmail.com" class="ct-link">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-linecap="round"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+      <a href="/RESUME_SHIVANK_KATIYAR.pdf" download class="ct-link">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" stroke-linecap="round"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3" stroke-linecap="round"/></svg>
+        Resume
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<footer>
+  <span class="ft">© 2025 Shivank Katiyar</span>
+  <span class="ft"><span class="ft-dot"></span>Built with precision</span>
+</footer>
+
+<script>
+// ── CURSOR
+const dot = document.getElementById('c-dot');
+const ring = document.getElementById('c-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove', e => {
+  mx=e.clientX; my=e.clientY;
+  dot.style.left=mx+'px'; dot.style.top=my+'px';
+});
+(function loop(){
+  rx+=(mx-rx)*.1; ry+=(my-ry)*.1;
+  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  requestAnimationFrame(loop);
+})();
+document.querySelectorAll('a,button,.proj-card,.s-tag,.stat-c,.edu-row').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
+});
+
+// ── NAV SCROLL
+const nav=document.getElementById('nav');
+const bar=document.getElementById('bar');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('s',window.scrollY>50);
+  bar.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
+});
+
+// ── MOBILE NAV
+function toggleMob(){ document.getElementById('mob').classList.toggle('on'); }
+function closeMob(){ document.getElementById('mob').classList.remove('on'); }
+
+// ── REVEAL
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:0.06});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+// ── COUNT UP
+document.querySelectorAll('[data-count]').forEach(el=>{
+  const ioc=new IntersectionObserver(ent=>{
+    if(ent[0].isIntersecting){
+      const t=+el.dataset.count; let c=0;
+      const id=setInterval(()=>{ el.textContent=++c; if(c>=t)clearInterval(id); },80);
+      ioc.unobserve(el);
+    }
+  },{threshold:.5});
+  ioc.observe(el);
+});
+
+// ── TYPING
+const label = document.getElementById('label-type');
+const words = ['Frontend Developer','UI Engineer','React Specialist','Firebase Expert'];
+let wi=0, ci=0, del=false;
+function type(){
+  const w=words[wi];
+  label.textContent = del ? w.slice(0,--ci) : w.slice(0,++ci);
+  if(!del && ci===w.length){ setTimeout(()=>{del=true;},1600); }
+  else if(del && ci===0){ del=false; wi=(wi+1)%words.length; }
+  setTimeout(type, del?50:80);
+}
+setTimeout(type, 800);
+
+// ── SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); }
+  });
+});
+
+// ── BLOB MOUSE PARALLAX
+const blob1=document.querySelector('.blob-1');
+const blob2=document.querySelector('.blob-2');
+document.addEventListener('mousemove',e=>{
+  const x=(e.clientX/window.innerWidth-.5)*30;
+  const y=(e.clientY/window.innerHeight-.5)*30;
+  if(blob1) blob1.style.transform=`translate(${x}px,${y}px)`;
+  if(blob2) blob2.style.transform=`translate(${-x*.6}px,${-y*.6}px)`;
+});
+</script>
+</body>
+</html>
