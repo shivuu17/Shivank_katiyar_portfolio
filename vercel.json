@@ -1,6 +1,7 @@
 {
-  "buildCommand": "echo 'Using pre-built dist'",
+  "version": 2,
+  "buildCommand": "echo 'static site'",
   "outputDirectory": "dist",
-  "framework": null,
-  "installCommand": "echo 'skip'"
+  "installCommand": "echo 'no install needed'",
+  "framework": null
 }
