@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Shivank Katiyar â€” Frontend Developer</title>
-  <meta name="description" content="Shivank Katiyar â€” Frontend Developer building precise, high-quality digital experiences."/>
+  <title>Shivank Katiyar &mdash; Frontend Developer</title>
+  <meta name="description" content="Shivank Katiyar &mdash; Frontend Developer building precise, high-quality digital experiences."/>
   <link rel="icon" type="image/png" href="/favicon.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -17,8 +17,8 @@
   --card:     #141414;
   --line:     rgba(255,255,255,0.09);
   --text:     #f5f5f7;
-  --muted:    rgba(245,245,247,0.65);  /* was .44 â€” now clearly readable */
-  --faint:    rgba(245,245,247,0.35);  /* was .12 â€” now visible */
+  --muted:    rgba(245,245,247,0.65);  /* was .44 &mdash; now clearly readable */
+  --faint:    rgba(245,245,247,0.35);  /* was .12 &mdash; now visible */
   --accent:   #2997ff;
   --accent-d: rgba(41,151,255,0.12);
   --sans:     'Inter', system-ui, -apple-system, sans-serif;
@@ -159,85 +159,86 @@ nav.s {
 }
 @keyframes blobIn { to { opacity:1; } }
 
-/* Hero main content area â€” 2 col split */
+/* Hero main content area &mdash; 2 col split */
 .hero-main {
   display:grid;
-  grid-template-columns:1fr 340px;
+  grid-template-columns:1fr 280px;
   align-items:center;
-  gap:48px;
-  padding:72px 72px 32px;
+  gap:40px;
+  padding:60px 72px 16px;
   position:relative; z-index:2;
-  width:100%; max-width:1400px;
+  width:100%; max-width:1350px;
+  margin:0 auto;
   overflow:hidden;
 }
-.hero-left { display:flex; flex-direction:column; }
+.hero-left { display:flex; flex-direction:column; justify-content:center; }
 .hero-right {
-  display:flex; flex-direction:column; align-items:flex-end;
+  display:flex; flex-direction:column; align-items:flex-end; justify-content:center;
   opacity:0; animation:up 1s .6s forwards;
 }
 
 /* Profile photo */
 .hero-photo-wrap {
-  position:relative; width:100%; max-width:320px;
+  position:relative; width:100%; max-width:270px;
 }
 .hero-photo {
-  width:100%; aspect-ratio:2/3;
+  width:100%; aspect-ratio:3/4;
   overflow:hidden;
-  clip-path:polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+  clip-path:polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
 }
 .hero-photo img {
   width:100%; height:100%;
   object-fit:cover; object-position:top center;
-  filter:grayscale(15%) contrast(1.08);
+  filter:contrast(1.05);
   transition:filter .6s, transform .8s;
 }
-.hero-photo:hover img { filter:grayscale(0%); transform:scale(1.03); }
+.hero-photo:hover img { transform:scale(1.03); }
 /* accent corner lines */
 .hero-photo-wrap::before {
   content:'';
-  position:absolute; top:-10px; left:-10px;
-  width:60px; height:60px;
+  position:absolute; top:-8px; left:-8px;
+  width:44px; height:44px;
   border-top:1.5px solid var(--accent);
   border-left:1.5px solid var(--accent);
   pointer-events:none; z-index:3;
 }
 .hero-photo-wrap::after {
   content:'';
-  position:absolute; bottom:-10px; right:-10px;
-  width:60px; height:60px;
+  position:absolute; bottom:-8px; right:-8px;
+  width:44px; height:44px;
   border-bottom:1.5px solid var(--accent);
   border-right:1.5px solid var(--accent);
   pointer-events:none; z-index:3;
 }
 .hero-badge {
-  position:absolute; bottom:24px; left:-28px;
+  position:absolute; bottom:14px; left:-20px;
   background:var(--surface);
   border:1px solid var(--line);
-  padding:14px 18px;
+  padding:10px 14px;
   font-family:var(--mono); z-index:4;
 }
-.hero-badge-val { font-size:1.4rem; font-weight:200; color:var(--text); letter-spacing:-.03em; line-height:1; }
+.hero-badge-val { font-size:1.2rem; font-weight:200; color:var(--text); letter-spacing:-.03em; line-height:1; }
 .hero-badge-val em { font-style:normal; color:var(--accent); }
-.hero-badge-lbl { font-size:.55rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-top:4px; }
+.hero-badge-lbl { font-size:.5rem; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); margin-top:2px; }
 
 /* Eyebrow */
 .hero-label {
-  font-family:var(--mono); font-size:.62rem; letter-spacing:.22em;
+  font-family:var(--mono); font-size:.6rem; letter-spacing:.22em;
   text-transform:uppercase; color:var(--accent);
-  display:flex; align-items:center; gap:12px;
-  margin-bottom:18px;
+  display:flex; align-items:center; gap:10px;
+  margin-bottom:12px;
   opacity:0; animation:up .7s .2s forwards;
 }
 .hero-label::before {
   content:'';
-  display:inline-block; width:28px; height:1px;
+  display:inline-block; width:24px; height:1px;
   background:var(--accent);
 }
 
 /* Name */
 .hero-name {
-  font-size:clamp(2.8rem, 6vw, 7rem);
-  font-weight:200; line-height:.9;
+  font-size:clamp(2.2rem, 4.5vw, 4.8rem);
+  font-weight:200; line-height:.92;
   letter-spacing:-.04em; color:var(--text);
   margin-bottom:0;
   opacity:0; animation:up 1s .4s forwards;
@@ -252,30 +253,30 @@ nav.s {
 .hero-rule {
   width:0; height:1px;
   background:linear-gradient(to right, var(--accent), transparent);
-  margin:18px 0;
+  margin:14px 0;
   animation:ruleGrow 1s .9s cubic-bezier(.16,1,.3,1) forwards;
 }
 @keyframes ruleGrow { to { width:100%; } }
 
 /* Bottom row */
 .hero-bottom {
-  display:flex; align-items:center; gap:24px; flex-wrap:wrap;
+  display:flex; align-items:center; gap:20px; flex-wrap:wrap;
   opacity:0; animation:up .8s 1s forwards;
 }
 .hero-desc {
-  font-size:.9rem; color:var(--muted);
-  max-width:440px; line-height:1.75;
+  font-size:.88rem; color:var(--muted);
+  max-width:420px; line-height:1.7;
 }
 .hero-desc strong { color:var(--text); font-weight:400; }
 .hero-actions {
-  display:flex; gap:12px; align-items:center;
+  display:flex; gap:10px; align-items:center;
   flex-shrink:0; flex-wrap:wrap;
 }
 .btn-a {
-  display:inline-flex; align-items:center; gap:9px;
-  font-size:.75rem; letter-spacing:.05em; font-weight:400;
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:.72rem; letter-spacing:.05em; font-weight:400;
   background:var(--accent); color:#fff;
-  padding:11px 24px; text-decoration:none;
+  padding:9px 20px; text-decoration:none;
   border-radius:2px; transition:all .25s; white-space:nowrap;
 }
 .btn-a:hover { background:#1a82e8; transform:translateY(-2px); box-shadow:0 8px 32px rgba(41,151,255,.3); }
@@ -544,7 +545,7 @@ footer {
 
 <!-- mobile nav -->
 <div class="mob" id="mob">
-  <div class="mob-x" onclick="closeMob()">âœ•</div>
+  <div class="mob-x" onclick="closeMob()">&times;</div>
   <a href="#about"     onclick="closeMob()">About</a>
   <a href="#skills"    onclick="closeMob()">Skills</a>
   <a href="#projects"  onclick="closeMob()">Work</a>
@@ -563,7 +564,7 @@ footer {
       <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="/RESUME_SHIVANK_KATIYAR.pdf" download class="nav-cv">Resume â†“</a>
+    <a href="/RESUME_SHIVANK_KATIYAR.pdf" download class="nav-cv">Resume &darr;</a>
   </div>
   <div class="ham" id="ham" onclick="toggleMob()"><span></span><span></span><span></span></div>
 </nav>
@@ -587,7 +588,7 @@ footer {
 
       <div class="hero-bottom">
         <p class="hero-desc">
-          <strong>Frontend Developer</strong> based in India â€”
+          <strong>Frontend Developer</strong> based in India &mdash;
           building fast, precise digital products with React,
           Firebase, and the modern web stack.
         </p>
@@ -596,7 +597,7 @@ footer {
             See my work
             <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="#contact" class="btn-b">Get in touch â†—</a>
+          <a href="#contact" class="btn-b">Get in touch &nearr;</a>
         </div>
       </div>
     </div>
@@ -653,7 +654,7 @@ footer {
           Not demos. Not tutorials. Real, live, production apps.
         </p>
         <p class="about-p rv d3">
-          From gym management dashboards to district news portals â€” every project
+          From gym management dashboards to district news portals &mdash; every project
           I ship is built with attention to craft, performance, and user experience.
           I care deeply about the details that most people skip.
         </p>
@@ -762,7 +763,7 @@ footer {
             <span class="p-pill">Firebase</span><span class="p-pill">Recharts</span><span class="p-pill">Firestore</span>
           </div>
         </div>
-        <div class="p-arr">â†—</div>
+        <div class="p-arr">&nearr;</div>
       </a>
 
       <a href="https://getfit-academy.web.app/" target="_blank" rel="noopener noreferrer" class="proj-card">
@@ -775,7 +776,7 @@ footer {
             <span class="p-pill">Framer Motion</span><span class="p-pill">Firebase Hosting</span>
           </div>
         </div>
-        <div class="p-arr">â†—</div>
+        <div class="p-arr">&nearr;</div>
       </a>
 
       <a href="https://apna-farrukhabad.web.app/" target="_blank" rel="noopener noreferrer" class="proj-card">
@@ -788,20 +789,20 @@ footer {
             <span class="p-pill">Cloudinary</span><span class="p-pill">Zod</span><span class="p-pill">Firebase Auth</span>
           </div>
         </div>
-        <div class="p-arr">â†—</div>
+        <div class="p-arr">&nearr;</div>
       </a>
 
       <a href="#" class="proj-card">
         <div class="p-num">04</div>
         <div class="p-body">
           <h3 class="p-title">AK Global Solutions</h3>
-          <p class="p-desc">Premium property management site â€” glassmorphism UI, typewriter hero, dark/light mode, portfolio grid, tiered pricing. Dual-deployed on Vercel + Firebase.</p>
+          <p class="p-desc">Premium property management site &mdash; glassmorphism UI, typewriter hero, dark/light mode, portfolio grid, tiered pricing. Dual-deployed on Vercel + Firebase.</p>
           <div class="p-pills">
             <span class="p-pill">React</span><span class="p-pill">Tailwind CSS</span>
             <span class="p-pill">Framer Motion</span><span class="p-pill">Firebase</span><span class="p-pill">Vercel</span>
           </div>
         </div>
-        <div class="p-arr">â†—</div>
+        <div class="p-arr">&nearr;</div>
       </a>
 
     </div>
@@ -816,7 +817,7 @@ footer {
     <div class="edu-grid">
       <div class="edu-row rv d2">
         <div class="edu-meta">
-          <div class="edu-yr">2023 â€” 2026</div>
+          <div class="edu-yr">2023 &mdash; 2026</div>
           <div class="edu-school">Galgotias University<br>Greater Noida Â· Final Year</div>
         </div>
         <div>
@@ -833,11 +834,11 @@ footer {
       </div>
       <div class="edu-row rv d3">
         <div class="edu-meta">
-          <div class="edu-yr">2022 â€” 2023</div>
+          <div class="edu-yr">2022 &mdash; 2023</div>
           <div class="edu-school">GD Goenka Global School<br>Noida Â· CBSE</div>
         </div>
         <div>
-          <h3 class="edu-deg">Class 12th â€” CBSE</h3>
+          <h3 class="edu-deg">Class 12th &mdash; CBSE</h3>
           <p class="edu-p">Strong foundation in Computer Science and Mathematics. Prepared the academic base for deeper specialization in computing and software development.</p>
           <div class="edu-tags">
             <span class="edu-t">Computer Science</span>
@@ -856,7 +857,7 @@ footer {
   <div class="w" style="text-align:center;padding-bottom:120px;">
     <div class="s-label rv" style="justify-content:center;margin-bottom:56px;">05 &mdash; Contact</div>
     <h2 class="ct-h rv d1">Have an idea?<br><em>Let's talk.</em></h2>
-    <p class="ct-sub rv d2">Whether you have a project in mind or just want to say hello â€” I'd love to hear from you.</p>
+    <p class="ct-sub rv d2">Whether you have a project in mind or just want to say hello &mdash; I'd love to hear from you.</p>
     <a href="mailto:katiyarshivank927@gmail.com" class="ct-email rv d3">katiyarshivank927@gmail.com</a>
     <div class="ct-links rv d4">
       <a href="https://github.com/Shivuu17" target="_blank" rel="noopener noreferrer" class="ct-link">
