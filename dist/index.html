@@ -1,11 +1,10 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Shivank Katiyar — Frontend Developer</title>
-  <meta name="description" content="Shivank Katiyar — Frontend Developer building precise, high-quality digital experiences."/>
+  <title>Shivank Katiyar â€” Frontend Developer</title>
+  <meta name="description" content="Shivank Katiyar â€” Frontend Developer building precise, high-quality digital experiences."/>
   <link rel="icon" type="image/png" href="/favicon.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -18,8 +17,8 @@
   --card:     #141414;
   --line:     rgba(255,255,255,0.09);
   --text:     #f5f5f7;
-  --muted:    rgba(245,245,247,0.65);  /* was .44 — now clearly readable */
-  --faint:    rgba(245,245,247,0.35);  /* was .12 — now visible */
+  --muted:    rgba(245,245,247,0.65);  /* was .44 â€” now clearly readable */
+  --faint:    rgba(245,245,247,0.35);  /* was .12 â€” now visible */
   --accent:   #2997ff;
   --accent-d: rgba(41,151,255,0.12);
   --sans:     'Inter', system-ui, -apple-system, sans-serif;
@@ -40,7 +39,7 @@ body {
   cursor: none;
 }
 
-/* ── CURSOR ────────────────────── */
+/* â”€â”€ CURSOR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 #c-dot {
   width:6px; height:6px;
   background:var(--text);
@@ -62,18 +61,18 @@ body {
 body.hov #c-dot  { width:4px; height:4px; background:var(--accent); }
 body.hov #c-ring { width:48px; height:48px; border-color:rgba(41,151,255,0.45); }
 
-/* ── PROGRESS ──────────────────── */
+/* â”€â”€ PROGRESS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 #bar {
   position:fixed; top:0; left:0; height:1px;
   background:var(--accent); z-index:1000; width:0%;
 }
 
-/* ── SCROLLBAR ─────────────────── */
+/* â”€â”€ SCROLLBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 ::-webkit-scrollbar { width:2px; }
 ::-webkit-scrollbar-track { background:var(--bg); }
 ::-webkit-scrollbar-thumb { background:rgba(41,151,255,0.4); }
 
-/* ── NAV ───────────────────────── */
+/* â”€â”€ NAV â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 nav {
   position:fixed; inset:0 0 auto 0; z-index:900;
   display:flex; align-items:center; justify-content:space-between;
@@ -120,7 +119,7 @@ nav.s {
 .ham { display:none; flex-direction:column; gap:4px; cursor:pointer; }
 .ham span { display:block; width:22px; height:1px; background:var(--muted); transition:all .3s; }
 
-/* ── MOBILE NAV ────────────────── */
+/* â”€â”€ MOBILE NAV â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .mob {
   display:none; position:fixed; inset:0;
   background:rgba(10,10,10,.97); z-index:800;
@@ -132,7 +131,7 @@ nav.s {
 .mob-x { position:absolute; top:28px; right:28px; font-size:1.5rem; color:var(--muted); cursor:pointer; transition:color .25s; }
 .mob-x:hover { color:var(--text); }
 
-/* ── HERO ──────────────────────── */
+/* â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 #hero {
   height:100vh;
   max-height:100vh;
@@ -160,7 +159,7 @@ nav.s {
 }
 @keyframes blobIn { to { opacity:1; } }
 
-/* Hero main content area — 2 col split */
+/* Hero main content area â€” 2 col split */
 .hero-main {
   display:grid;
   grid-template-columns:1fr 340px;
@@ -316,11 +315,11 @@ nav.s {
 
 @keyframes slide { to { left:100%; } }
 
-/* ── WRAPPER ────────────────────── */
+/* â”€â”€ WRAPPER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .w { max-width:1300px; margin:0 auto; padding:120px 72px; box-sizing:border-box; }
 .w-sm { max-width:1300px; margin:0 auto; padding:0 72px; }
 
-/* ── SECTION LABEL ──────────────── */
+/* â”€â”€ SECTION LABEL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .s-label {
   display:flex; align-items:center; gap:20px;
   font-family:var(--mono); font-size:.62rem;
@@ -330,7 +329,7 @@ nav.s {
 .s-label::before { content:''; flex:1; height:1px; background:var(--line); }
 .s-label::after  { content:''; width:6px; height:6px; border-radius:50%; background:var(--accent); flex-shrink:0; }
 
-/* ── ABOUT ──────────────────────── */
+/* â”€â”€ ABOUT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 #about { border-top:1px solid var(--line); }
 .about-grid { display:grid; grid-template-columns:5fr 4fr; gap:80px; align-items:start; }
 .about-lede {
@@ -369,7 +368,7 @@ nav.s {
   color:var(--muted); display:flex; justify-content:space-between;
 }
 
-/* ── SKILLS ─────────────────────── */
+/* â”€â”€ SKILLS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 #skills { border-top:1px solid var(--line); }
 .skills-intro { font-size:clamp(2rem,4vw,3.8rem); font-weight:200; letter-spacing:-.03em; color:var(--text); margin-bottom:60px; line-height:1.1; }
 .skills-intro em { font-style:normal; color:var(--accent); }
@@ -390,7 +389,7 @@ nav.s {
 }
 .s-tag:hover { color:var(--text); border-color:rgba(41,151,255,.3); background:var(--accent-d); }
 
-/* ── PROJECTS ───────────────────── */
+/* â”€â”€ PROJECTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 #projects { border-top:1px solid var(--line); }
 .proj-top { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:60px; }
 .proj-h { font-size:clamp(2rem,4vw,3.8rem); font-weight:200; letter-spacing:-.03em; color:var(--text); line-height:1.1; }
@@ -428,7 +427,7 @@ nav.s {
 }
 .proj-card:hover .p-arr { border-color:var(--accent); color:var(--accent); transform:rotate(45deg); }
 
-/* ── EDUCATION ──────────────────── */
+/* â”€â”€ EDUCATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 #education { border-top:1px solid var(--line); }
 .edu-h { font-size:clamp(2rem,4vw,3.8rem); font-weight:200; letter-spacing:-.03em; color:var(--text); margin-bottom:60px; line-height:1.1; }
 .edu-h em { font-style:normal; color:var(--accent); }
@@ -448,7 +447,7 @@ nav.s {
 .edu-tags { display:flex; flex-wrap:wrap; gap:7px; }
 .edu-t { font-family:var(--mono); font-size:.58rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); border:1px solid var(--line); padding:4px 10px; }
 
-/* ── CONTACT ────────────────────── */
+/* â”€â”€ CONTACT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 #contact { border-top:1px solid var(--line); text-align:center; }
 .ct-h {
   font-size:clamp(3rem, 9vw, 9rem); font-weight:200;
@@ -475,7 +474,7 @@ nav.s {
 }
 .ct-link:hover { color:var(--text); border-color:rgba(41,151,255,.3); background:var(--accent-d); }
 
-/* ── FOOTER ─────────────────────── */
+/* â”€â”€ FOOTER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 footer {
   border-top:1px solid var(--line); padding:28px 72px;
   display:flex; justify-content:space-between; align-items:center;
@@ -484,7 +483,7 @@ footer {
 .ft a { color:var(--accent); text-decoration:none; }
 .ft-dot { display:inline-block; width:5px; height:5px; background:var(--accent); border-radius:50%; margin:0 10px; vertical-align:middle; }
 
-/* ── REVEAL ─────────────────────── */
+/* â”€â”€ REVEAL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .rv { opacity:0; transform:translateY(28px); transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
 .rv.in { opacity:1; transform:none; }
 .rv.d1 { transition-delay:.08s; }
@@ -493,10 +492,10 @@ footer {
 .rv.d4 { transition-delay:.32s; }
 .rv.d5 { transition-delay:.40s; }
 
-/* ── KEYFRAMES ──────────────────── */
+/* â”€â”€ KEYFRAMES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @keyframes up { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:none} }
 
-/* ── RESPONSIVE ─────────────────── */
+/* â”€â”€ RESPONSIVE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media(max-width:960px){
   nav { padding:22px 28px; }
   nav.s { padding:14px 28px; }
@@ -545,7 +544,7 @@ footer {
 
 <!-- mobile nav -->
 <div class="mob" id="mob">
-  <div class="mob-x" onclick="closeMob()">✕</div>
+  <div class="mob-x" onclick="closeMob()">âœ•</div>
   <a href="#about"     onclick="closeMob()">About</a>
   <a href="#skills"    onclick="closeMob()">Skills</a>
   <a href="#projects"  onclick="closeMob()">Work</a>
@@ -564,12 +563,12 @@ footer {
       <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="/RESUME_SHIVANK_KATIYAR.pdf" download class="nav-cv">Resume ↓</a>
+    <a href="/RESUME_SHIVANK_KATIYAR.pdf" download class="nav-cv">Resume â†“</a>
   </div>
   <div class="ham" id="ham" onclick="toggleMob()"><span></span><span></span><span></span></div>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- â”€â”€ HERO â”€â”€ -->
 <section id="hero">
   <div class="blob blob-1"></div>
   <div class="blob blob-2"></div>
@@ -588,7 +587,7 @@ footer {
 
       <div class="hero-bottom">
         <p class="hero-desc">
-          <strong>Frontend Developer</strong> based in India —
+          <strong>Frontend Developer</strong> based in India â€”
           building fast, precise digital products with React,
           Firebase, and the modern web stack.
         </p>
@@ -597,7 +596,7 @@ footer {
             See my work
             <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="#contact" class="btn-b">Get in touch ↗</a>
+          <a href="#contact" class="btn-b">Get in touch â†—</a>
         </div>
       </div>
     </div>
@@ -637,7 +636,7 @@ footer {
   </div>
 </section>
 
-<!-- ── ABOUT ── -->
+<!-- â”€â”€ ABOUT â”€â”€ -->
 <section id="about">
   <div class="w">
     <div class="s-label rv">01 &mdash; About</div>
@@ -654,7 +653,7 @@ footer {
           Not demos. Not tutorials. Real, live, production apps.
         </p>
         <p class="about-p rv d3">
-          From gym management dashboards to district news portals — every project
+          From gym management dashboards to district news portals â€” every project
           I ship is built with attention to craft, performance, and user experience.
           I care deeply about the details that most people skip.
         </p>
@@ -686,7 +685,7 @@ footer {
   </div>
 </section>
 
-<!-- ── SKILLS ── -->
+<!-- â”€â”€ SKILLS â”€â”€ -->
 <section id="skills">
   <div class="w">
     <div class="s-label rv">02 &mdash; Skills</div>
@@ -743,7 +742,7 @@ footer {
   </div>
 </section>
 
-<!-- ── PROJECTS ── -->
+<!-- â”€â”€ PROJECTS â”€â”€ -->
 <section id="projects">
   <div class="w">
     <div class="s-label rv">03 &mdash; Selected Work</div>
@@ -763,7 +762,7 @@ footer {
             <span class="p-pill">Firebase</span><span class="p-pill">Recharts</span><span class="p-pill">Firestore</span>
           </div>
         </div>
-        <div class="p-arr">↗</div>
+        <div class="p-arr">â†—</div>
       </a>
 
       <a href="https://getfit-academy.web.app/" target="_blank" rel="noopener noreferrer" class="proj-card">
@@ -776,7 +775,7 @@ footer {
             <span class="p-pill">Framer Motion</span><span class="p-pill">Firebase Hosting</span>
           </div>
         </div>
-        <div class="p-arr">↗</div>
+        <div class="p-arr">â†—</div>
       </a>
 
       <a href="https://apna-farrukhabad.web.app/" target="_blank" rel="noopener noreferrer" class="proj-card">
@@ -789,27 +788,27 @@ footer {
             <span class="p-pill">Cloudinary</span><span class="p-pill">Zod</span><span class="p-pill">Firebase Auth</span>
           </div>
         </div>
-        <div class="p-arr">↗</div>
+        <div class="p-arr">â†—</div>
       </a>
 
       <a href="#" class="proj-card">
         <div class="p-num">04</div>
         <div class="p-body">
           <h3 class="p-title">AK Global Solutions</h3>
-          <p class="p-desc">Premium property management site — glassmorphism UI, typewriter hero, dark/light mode, portfolio grid, tiered pricing. Dual-deployed on Vercel + Firebase.</p>
+          <p class="p-desc">Premium property management site â€” glassmorphism UI, typewriter hero, dark/light mode, portfolio grid, tiered pricing. Dual-deployed on Vercel + Firebase.</p>
           <div class="p-pills">
             <span class="p-pill">React</span><span class="p-pill">Tailwind CSS</span>
             <span class="p-pill">Framer Motion</span><span class="p-pill">Firebase</span><span class="p-pill">Vercel</span>
           </div>
         </div>
-        <div class="p-arr">↗</div>
+        <div class="p-arr">â†—</div>
       </a>
 
     </div>
   </div>
 </section>
 
-<!-- ── EDUCATION ── -->
+<!-- â”€â”€ EDUCATION â”€â”€ -->
 <section id="education">
   <div class="w">
     <div class="s-label rv">04 &mdash; Education</div>
@@ -817,8 +816,8 @@ footer {
     <div class="edu-grid">
       <div class="edu-row rv d2">
         <div class="edu-meta">
-          <div class="edu-yr">2023 — 2026</div>
-          <div class="edu-school">Galgotias University<br>Greater Noida · Final Year</div>
+          <div class="edu-yr">2023 â€” 2026</div>
+          <div class="edu-school">Galgotias University<br>Greater Noida Â· Final Year</div>
         </div>
         <div>
           <h3 class="edu-deg">Bachelor of Computer Applications</h3>
@@ -834,11 +833,11 @@ footer {
       </div>
       <div class="edu-row rv d3">
         <div class="edu-meta">
-          <div class="edu-yr">2022 — 2023</div>
-          <div class="edu-school">GD Goenka Global School<br>Noida · CBSE</div>
+          <div class="edu-yr">2022 â€” 2023</div>
+          <div class="edu-school">GD Goenka Global School<br>Noida Â· CBSE</div>
         </div>
         <div>
-          <h3 class="edu-deg">Class 12th — CBSE</h3>
+          <h3 class="edu-deg">Class 12th â€” CBSE</h3>
           <p class="edu-p">Strong foundation in Computer Science and Mathematics. Prepared the academic base for deeper specialization in computing and software development.</p>
           <div class="edu-tags">
             <span class="edu-t">Computer Science</span>
@@ -852,12 +851,12 @@ footer {
   </div>
 </section>
 
-<!-- ── CONTACT ── -->
+<!-- â”€â”€ CONTACT â”€â”€ -->
 <section id="contact">
   <div class="w" style="text-align:center;padding-bottom:120px;">
     <div class="s-label rv" style="justify-content:center;margin-bottom:56px;">05 &mdash; Contact</div>
     <h2 class="ct-h rv d1">Have an idea?<br><em>Let's talk.</em></h2>
-    <p class="ct-sub rv d2">Whether you have a project in mind or just want to say hello — I'd love to hear from you.</p>
+    <p class="ct-sub rv d2">Whether you have a project in mind or just want to say hello â€” I'd love to hear from you.</p>
     <a href="mailto:katiyarshivank927@gmail.com" class="ct-email rv d3">katiyarshivank927@gmail.com</a>
     <div class="ct-links rv d4">
       <a href="https://github.com/Shivuu17" target="_blank" rel="noopener noreferrer" class="ct-link">
@@ -882,12 +881,12 @@ footer {
 
 <!-- footer -->
 <footer>
-  <span class="ft">© 2025 Shivank Katiyar</span>
+  <span class="ft">Â© 2025 Shivank Katiyar</span>
   <span class="ft"><span class="ft-dot"></span>Built with precision</span>
 </footer>
 
 <script>
-// ── CURSOR
+// â”€â”€ CURSOR
 const dot = document.getElementById('c-dot');
 const ring = document.getElementById('c-ring');
 let mx=0,my=0,rx=0,ry=0;
@@ -905,7 +904,7 @@ document.querySelectorAll('a,button,.proj-card,.s-tag,.stat-c,.edu-row').forEach
   el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
 });
 
-// ── NAV SCROLL
+// â”€â”€ NAV SCROLL
 const nav=document.getElementById('nav');
 const bar=document.getElementById('bar');
 window.addEventListener('scroll',()=>{
@@ -913,17 +912,17 @@ window.addEventListener('scroll',()=>{
   bar.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
 });
 
-// ── MOBILE NAV
+// â”€â”€ MOBILE NAV
 function toggleMob(){ document.getElementById('mob').classList.toggle('on'); }
 function closeMob(){ document.getElementById('mob').classList.remove('on'); }
 
-// ── REVEAL
+// â”€â”€ REVEAL
 const io = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
 },{threshold:0.06});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
-// ── COUNT UP
+// â”€â”€ COUNT UP
 document.querySelectorAll('[data-count]').forEach(el=>{
   const ioc=new IntersectionObserver(ent=>{
     if(ent[0].isIntersecting){
@@ -935,7 +934,7 @@ document.querySelectorAll('[data-count]').forEach(el=>{
   ioc.observe(el);
 });
 
-// ── TYPING
+// â”€â”€ TYPING
 const label = document.getElementById('label-type');
 const words = ['Frontend Developer','UI Engineer','React Specialist','Firebase Expert'];
 let wi=0, ci=0, del=false;
@@ -948,7 +947,7 @@ function type(){
 }
 setTimeout(type, 800);
 
-// ── SMOOTH SCROLL
+// â”€â”€ SMOOTH SCROLL
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
     const t=document.querySelector(a.getAttribute('href'));
@@ -956,7 +955,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 
-// ── BLOB MOUSE PARALLAX
+// â”€â”€ BLOB MOUSE PARALLAX
 const blob1=document.querySelector('.blob-1');
 const blob2=document.querySelector('.blob-2');
 document.addEventListener('mousemove',e=>{
@@ -968,21 +967,3 @@ document.addEventListener('mousemove',e=>{
 </script>
 </body>
 </html>
-=======
-
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Shivank Katiyar Portfolio</title>
-      <script type="module" crossorigin src="/assets/index-BCYOZXBs.js"></script>
-      <link rel="stylesheet" crossorigin href="/assets/index-Dxl4cqGN.css">
-    </head>
-
-    <body>
-      <div id="root"></div>
-    </body>
-  </html>
-  
->>>>>>> 2420f0cc4dc3f8f98df53590d22d51e463ea9726
