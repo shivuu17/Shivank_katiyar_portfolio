@@ -46,7 +46,7 @@ body {
   border-radius:50%;
   position:fixed; top:0; left:0;
   transform:translate(-50%,-50%);
-  pointer-events:none; z-index:9999;
+  pointer-events:none; z-index:999999;
   transition:width .25s, height .25s, background .25s;
 }
 #c-ring {
@@ -55,7 +55,7 @@ body {
   border-radius:50%;
   position:fixed; top:0; left:0;
   transform:translate(-50%,-50%);
-  pointer-events:none; z-index:9998;
+  pointer-events:none; z-index:999998;
   transition:width .3s, height .3s, border-color .3s;
 }
 body.hov #c-dot  { width:4px; height:4px; background:var(--accent); }
@@ -994,9 +994,15 @@ document.addEventListener('mousemove', e => {
   ring.style.left=rx+'px'; ring.style.top=ry+'px';
   requestAnimationFrame(loop);
 })();
-document.querySelectorAll('a,button,.proj-card,.s-tag,.stat-c,.edu-row').forEach(el=>{
-  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
-  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
+document.addEventListener('mouseover', e => {
+  if (e.target.closest('a,button,.proj-card,.s-tag,.stat-c,.edu-row,.cert-close-btn')) {
+    document.body.classList.add('hov');
+  }
+});
+document.addEventListener('mouseout', e => {
+  if (e.target.closest('a,button,.proj-card,.s-tag,.stat-c,.edu-row,.cert-close-btn')) {
+    document.body.classList.remove('hov');
+  }
 });
 
 // â”€â”€ NAV SCROLL
