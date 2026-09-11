@@ -16,8 +16,19 @@ export function MatrixRain({ theme }: MatrixRainProps) {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    const isSmallScreen = window.matchMedia('(max-width: 640px)').matches;
+    const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const pixelRatio = isSmallScreen ? 1 : Math.min(window.devicePixelRatio || 1, 1.5);
+
+    const resizeCanvas = () => {
+      canvas.width = Math.floor(window.innerWidth * pixelRatio);
+      canvas.height = Math.floor(window.innerHeight * pixelRatio);
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+      ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    };
+
+    resizeCanvas();
 
     const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
     const fontSize = 14;
@@ -59,11 +70,12 @@ export function MatrixRain({ theme }: MatrixRainProps) {
       }
     }
 
-    const interval = setInterval(draw, 33);
+    if (isReducedMotion) return;
+
+    const interval = window.setInterval(draw, isSmallScreen ? 80 : 50);
 
     const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      resizeCanvas();
     };
 
     window.addEventListener('resize', handleResize);

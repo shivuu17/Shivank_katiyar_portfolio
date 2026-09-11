@@ -176,6 +176,8 @@ export function Hero() {
                     <img
                       src="/profile-picture.jpg"
                       alt="Shivank Katiyar"
+                      fetchPriority="high"
+                      decoding="async"
                       className="relative w-full h-full rounded-lg border border-cyan-500/30 object-cover"
                     />
                   </div>

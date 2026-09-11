@@ -1,3 +1,91 @@
 @import './fonts.css';
 @import './tailwind.css';
 @import './theme.css';
+
+html,
+body,
+#root {
+	min-width: 0;
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
+img,
+svg,
+canvas {
+	max-width: 100%;
+}
+
+section,
+footer {
+	overflow-x: clip;
+}
+
+@media (max-width: 640px) {
+	section h2,
+	section h3,
+	section p,
+	section a,
+	section span {
+		overflow-wrap: anywhere;
+	}
+
+	section h2 {
+		font-size: clamp(1.35rem, 7vw, 1.75rem);
+	}
+
+	.section-skeleton {
+		min-height: 100vh;
+	}
+}
+
+.section-skeleton {
+	display: grid;
+	gap: 1rem;
+	align-content: center;
+	min-height: 60vh;
+	padding: 3rem 1rem;
+	background: linear-gradient(180deg, #050505, #111827, #050505);
+}
+
+.skeleton-line,
+.skeleton-card {
+	width: min(100%, 72rem);
+	margin-inline: auto;
+	border-radius: 0.5rem;
+	background: linear-gradient(90deg, rgba(34, 211, 238, 0.08), rgba(34, 211, 238, 0.2), rgba(34, 211, 238, 0.08));
+	background-size: 200% 100%;
+	animation: skeleton-shimmer 1.4s ease-in-out infinite;
+}
+
+.skeleton-line {
+	height: 1rem;
+}
+
+.skeleton-line--title {
+	width: min(12rem, 70%);
+	height: 2rem;
+}
+
+.skeleton-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1rem;
+	width: min(100%, 72rem);
+	margin-inline: auto;
+}
+
+.skeleton-card {
+	height: 14rem;
+}
+
+@keyframes skeleton-shimmer {
+	0% { background-position: 100% 0; }
+	100% { background-position: -100% 0; }
+}
+
+@media (max-width: 640px) {
+	.skeleton-grid {
+		grid-template-columns: 1fr;
+	}
+}

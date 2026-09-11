@@ -39,6 +39,124 @@ body {
   cursor: none;
 }
 
+body,
+section,
+.w,
+.w-sm,
+footer {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+#page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: radial-gradient(circle at 50% 35%, #111a26 0%, var(--bg) 55%);
+  transition: opacity .35s ease, visibility .35s ease;
+}
+
+#page-loader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-box {
+  width: min(520px, 100%);
+  text-align: center;
+}
+
+.loader-brand {
+  display: block;
+  color: var(--text);
+  font-size: clamp(1.8rem, 6vw, 3rem);
+  font-weight: 200;
+  letter-spacing: -.04em;
+}
+
+.loader-brand em {
+  color: var(--accent);
+  font-style: normal;
+}
+
+.loader-status {
+  display: block;
+  margin-top: 10px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.loader-skeleton {
+  display: grid;
+  gap: 10px;
+  margin: 34px auto 22px;
+  width: min(360px, 100%);
+}
+
+.loader-skeleton span {
+  display: block;
+  height: 10px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(255,255,255,.04), rgba(41,151,255,.22), rgba(255,255,255,.04));
+  background-size: 200% 100%;
+  animation: loaderShimmer 1.4s ease-in-out infinite;
+}
+
+.loader-skeleton span:first-child { width: 42%; height: 18px; }
+.loader-skeleton span:last-child { width: 68%; }
+
+.loader-progress {
+  height: 2px;
+  overflow: hidden;
+  background: rgba(255,255,255,.1);
+}
+
+.loader-progress span {
+  display: block;
+  width: 35%;
+  height: 100%;
+  background: var(--accent);
+  box-shadow: 0 0 14px rgba(41,151,255,.8);
+  animation: loaderProgress 1.5s ease-in-out infinite;
+}
+
+@keyframes loaderShimmer {
+  from { background-position: 100% 0; }
+  to { background-position: -100% 0; }
+}
+
+@keyframes loaderProgress {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(420%); }
+}
+
 /* â”€â”€ CURSOR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 #c-dot {
   width:6px; height:6px;
@@ -171,6 +289,32 @@ nav.s {
   margin:0 auto;
   overflow:hidden;
 }
+
+#hero .hero-label,
+#hero .hero-name,
+#hero .hero-bottom,
+#hero .hero-right,
+#hero .hero-strip {
+  animation-play-state: paused;
+}
+
+body.page-ready .hero-main {
+  animation: heroSlowReveal 1.8s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+body.page-ready #hero .hero-label,
+body.page-ready #hero .hero-name,
+body.page-ready #hero .hero-bottom,
+body.page-ready #hero .hero-right,
+body.page-ready #hero .hero-strip {
+  animation-play-state: running;
+}
+
+@keyframes heroSlowReveal {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .hero-left { display:flex; flex-direction:column; justify-content:center; }
 .hero-right {
   display:flex; flex-direction:column; align-items:flex-end; justify-content:center;
@@ -465,6 +609,18 @@ nav.s {
   transition:border-color .25s;
 }
 .ct-email:hover { border-color:var(--accent); }
+.ct-phone {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: -36px auto 48px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: .78rem;
+  letter-spacing: .12em;
+  text-decoration: none;
+}
+.ct-phone:hover { color: var(--accent); }
 .ct-links { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; }
 .ct-link {
   display:flex; align-items:center; gap:9px;
@@ -602,13 +758,13 @@ footer {
 
 /* ── RESPONSIVE ──────────────────── */
 @media(max-width:960px){
-  #hero { height:auto; min-height:100vh; max-height:none; overflow:visible; display:flex; flex-direction:column; justify-content:space-between; width:100%; }
+  #hero { height:auto; min-height:100vh; max-height:none; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; width:100%; }
   nav { padding:16px 20px; width:100%; box-sizing:border-box; }
   nav.s { padding:12px 20px; }
   .nav-links,.nav-cv { display:none; }
   .ham { display:flex; }
   
-  .hero-main { display:flex; flex-direction:column; padding:80px 20px 24px; gap:28px; width:100%; max-width:100%; margin:0; box-sizing:border-box; overflow:visible; }
+  .hero-main { display:flex; flex-direction:column; padding:80px 20px 24px; gap:28px; width:100%; max-width:100%; margin:0; box-sizing:border-box; overflow:hidden; }
   .hero-left { width:100%; text-align:left; }
   .hero-name { font-size:clamp(2.5rem, 11vw, 4.2rem); line-height:.92; letter-spacing:-.04em; }
   .hero-desc { max-width:100%; font-size:.88rem; line-height:1.65; margin-bottom:12px; }
@@ -646,6 +802,22 @@ footer {
   nav { padding:14px 16px; }
   .logo-name { font-size:.78rem; }
   .hero-main { padding:76px 16px 20px; gap:24px; }
+  .hero-left,
+  .hero-bottom,
+  .hero-desc,
+  .hero-actions,
+  .hero-strip,
+  .hero-strip-item,
+  .w,
+  .w-sm {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .hero-bottom { display: block; }
+  .hero-desc { width: 100%; overflow-wrap: anywhere; }
+  .hero-actions { display: flex; width: 100%; margin-top: 18px; }
+  .btn-a,
+  .btn-b { min-width: 0; flex: 1 1 0; }
   .hero-name { font-size:clamp(2.2rem, 10.5vw, 3.6rem); }
   .hero-photo-wrap { max-width:190px; }
   .hero-badge { left:-8px; bottom:8px; padding:6px 10px; }
@@ -668,11 +840,52 @@ footer {
   .cert-img { max-height: 48vh; }
   .cert-modal-footer { padding: 10px 12px; flex-direction: column; align-items: stretch; gap: 8px; }
   .cert-footer-btns { width: 100%; justify-content: space-between; }
+
+  section h1,
+  section h2,
+  section h3,
+  section p,
+  section a,
+  section span,
+  footer span {
+    overflow-wrap: anywhere;
+  }
+
+  .proj-h,
+  .edu-h,
+  .ct-h {
+    font-size: clamp(2.2rem, 12vw, 3.5rem);
+    line-height: 1;
+  }
+
+  .ct-email {
+    display: inline-block;
+    max-width: 100%;
+  }
+}
+
+@media (pointer: coarse) {
+  body { cursor: auto; }
+  #c-dot,
+  #c-ring { display: none; }
 }
 
 </style>
 </head>
 <body>
+
+<div id="page-loader" aria-label="Loading portfolio">
+  <div class="loader-box">
+    <span class="loader-brand">Shivank <em>Katiyar</em></span>
+    <span class="loader-status" aria-live="polite">Loading portfolio</span>
+    <div class="loader-skeleton" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="loader-progress" aria-hidden="true"><span></span></div>
+  </div>
+</div>
 
 <!-- cursor -->
 <div id="c-dot"></div>
@@ -705,7 +918,7 @@ footer {
       </div>
     </div>
     <div class="cert-modal-body">
-      <img src="/isro-certificate.jpg" alt="ISRO Certificate - Shivank Katiyar" class="cert-img" id="certImg" onclick="toggleCertZoom()" title="Click image to zoom in/out" />
+      <img src="/isro-certificate.jpg" alt="ISRO Certificate - Shivank Katiyar" class="cert-img" id="certImg" loading="lazy" decoding="async" onclick="toggleCertZoom()" title="Click image to zoom in/out" />
     </div>
     <div class="cert-modal-footer">
       <div class="cert-footer-info">
@@ -736,7 +949,7 @@ footer {
 
 <!-- nav -->
 <nav id="nav">
-  <a href="#" class="logo"><img src="/sk-logo.png" alt="SK" class="logo-img"/><span class="logo-name">Shivank Katiyar</span></a>
+  <a href="#" class="logo"><img src="/sk-logo.png" alt="SK" class="logo-img" fetchpriority="high" decoding="async"/><span class="logo-name">Shivank Katiyar</span></a>
   <div class="nav-r">
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
@@ -788,7 +1001,7 @@ footer {
     <div class="hero-right">
       <div class="hero-photo-wrap">
         <div class="hero-photo">
-          <img src="/profile-picture.jpg" alt="Shivank Katiyar"/>
+          <img src="/profile-picture.jpg" alt="Shivank Katiyar" fetchpriority="high" decoding="async"/>
         </div>
         <div class="hero-badge">
           <div class="hero-badge-val">4<em>+</em></div>
@@ -862,7 +1075,7 @@ footer {
       </div>
       <div class="about-right rv d2">
         <div class="about-photo">
-          <img src="/about-photo.jpg" alt="Shivank Katiyar"/>
+          <img src="/about-photo.jpg" alt="Shivank Katiyar" loading="lazy" decoding="async"/>
         </div>
         <div class="about-name-tag">
           <span>Shivank Katiyar</span>
@@ -1058,6 +1271,7 @@ footer {
     <h2 class="ct-h rv d1">Have an idea?<br><em>Let's talk.</em></h2>
     <p class="ct-sub rv d2">Whether you have a project in mind or just want to say hello &mdash; I'd love to hear from you.</p>
     <a href="mailto:katiyarshivank927@gmail.com" class="ct-email rv d3">katiyarshivank927@gmail.com</a>
+    <a href="tel:+919956208289" class="ct-phone rv d4">+91 9956208289</a>
     <div class="ct-links rv d4">
       <a href="https://github.com/Shivuu17" target="_blank" rel="noopener noreferrer" class="ct-link">
         <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
@@ -1094,11 +1308,13 @@ document.addEventListener('mousemove', e => {
   mx=e.clientX; my=e.clientY;
   dot.style.left=mx+'px'; dot.style.top=my+'px';
 });
-(function loop(){
-  rx+=(mx-rx)*.1; ry+=(my-ry)*.1;
-  ring.style.left=rx+'px'; ring.style.top=ry+'px';
-  requestAnimationFrame(loop);
-})();
+if (!window.matchMedia('(pointer: coarse)').matches) {
+  (function loop(){
+    rx+=(mx-rx)*.1; ry+=(my-ry)*.1;
+    ring.style.left=rx+'px'; ring.style.top=ry+'px';
+    requestAnimationFrame(loop);
+  })();
+}
 document.addEventListener('mouseover', e => {
   if (e.target.closest('a,button,.proj-card,.s-tag,.stat-c,.edu-row,.cert-close-btn')) {
     document.body.classList.add('hov');
@@ -1213,7 +1429,8 @@ document.addEventListener('click', (e) => {
   if (e.target === modal) closeCertModal();
 });
 window.addEventListener('load', () => {
-  setTimeout(openCertModal, 500);
+  document.body.classList.add('page-ready');
+  requestAnimationFrame(() => document.getElementById('page-loader')?.classList.add('is-hidden'));
 });
 </script>
 </body>
