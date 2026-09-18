@@ -8,6 +8,16 @@ import {
 
 const education = [
   {
+    degree: "Master of Computer Applications",
+    institution: "Galgotias College of Engineering and Technology",
+    period: "2026 - 2028",
+    gpa: "Pursuing",
+    achievements: [
+      "Pursuing advanced studies in computer applications and software development",
+    ],
+    courses: [],
+  },
+  {
     degree: "Bachelor of Computer Applications",
     institution: "Galgotias University",
     period: "2023 - 2026",
@@ -19,6 +29,7 @@ const education = [
     ],
     courses: [
       "Web Development",
+      "data Structures and Algorithms",
       "Software Engineering",
       "Database Management Systems",
       "Computer Networks",
@@ -39,7 +50,8 @@ const education = [
       "Computer Science",
       "Mathematics",
       "English",
-      "Business Studies",
+      "Physics",
+      "Chemistry",
     ],
   },
 ];
