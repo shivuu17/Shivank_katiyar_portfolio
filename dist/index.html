@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="/favicon.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Space+Mono&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet"/>
 
 <style>
 :root {
@@ -21,7 +21,7 @@
   --faint:    rgba(245,245,247,0.35);  /* was .12 &mdash; now visible */
   --accent:   #2997ff;
   --accent-d: rgba(41,151,255,0.12);
-  --sans:     'Inter', system-ui, -apple-system, sans-serif;
+  --sans:     'Manrope', system-ui, -apple-system, sans-serif;
   --mono:     'Space Mono', monospace;
 }
 
@@ -559,12 +559,14 @@ body.page-ready #hero .hero-strip {
 .proj-card:hover { background:var(--card); }
 .proj-card:hover::before { transform:scaleY(1); }
 .p-num { font-family:var(--mono); font-size:.62rem; letter-spacing:.1em; color:var(--muted); }
-.p-body { min-width:0; }
+.p-body { min-width:0; padding-right:88px; }
 .p-title { font-size:1.25rem; font-weight:400; color:var(--text); letter-spacing:-.01em; margin-bottom:8px; transition:color .25s; }
 .proj-card:hover .p-title { color:var(--accent); }
 .p-desc { font-size:.85rem; color:var(--muted); line-height:1.7; margin-bottom:14px; }
 .p-pills { display:flex; flex-wrap:wrap; gap:6px; }
 .p-pill { font-family:var(--mono); font-size:.58rem; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); border:1px solid var(--line); padding:3px 9px; }
+.p-live { position:absolute; top:18px; right:18px; display:inline-flex; align-items:center; gap:6px; padding:7px 11px; border:1px solid var(--accent); color:var(--accent); font-family:var(--mono); font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; width:max-content; transition:all .25s; }
+.proj-card:hover .p-live { background:var(--accent); color:var(--bg); }
 .p-arr {
   width:36px; height:36px; border:1px solid var(--line); border-radius:50%;
   display:flex; align-items:center; justify-content:center;
@@ -941,7 +943,7 @@ footer {
   <div class="mob-x" onclick="closeMob()">&times;</div>
   <a href="#about"     onclick="closeMob()">About</a>
   <a href="#skills"    onclick="closeMob()">Skills</a>
-  <a href="#projects"  onclick="closeMob()">Work</a>
+  <a href="#projects"  onclick="closeMob()">Projects</a>
   <a href="#education" onclick="closeMob()">Education</a>
   <a href="#contact"   onclick="closeMob()">Contact</a>
   <a href="javascript:void(0)" onclick="closeMob(); openCertModal();" style="font-size:1.5rem; color:var(--accent);">ISRO Cert 📜</a>
@@ -954,7 +956,7 @@ footer {
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Work</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -1165,16 +1167,17 @@ footer {
     </div>
     <div class="proj-grid rv d2">
 
-      <a href="https://sk-body-first-gym.web.app/" target="_blank" rel="noopener noreferrer" class="proj-card">
+      <a href="https://anysend-one.vercel.app/" target="_blank" rel="noopener noreferrer" class="proj-card">
         <div class="p-num">01</div>
         <div class="p-body">
-          <h3 class="p-title">SK Body First Gym</h3>
-          <p class="p-desc">Full-stack gym management platform with real-time lead syncing, KPI analytics dashboards (pie / bar / radar), dual goal/status filters, and Firebase Auth secured admin panel.</p>
+          <h3 class="p-title">Anysend</h3>
+          <p class="p-desc">Cross-platform local file transfer app for sending photos, 4K videos, documents, ZIP archives, and multi-gigabyte files directly between devices over local Wi-Fi or hotspot with zero cloud dependency.</p>
           <div class="p-pills">
-            <span class="p-pill">React 18</span><span class="p-pill">Vite</span>
-            <span class="p-pill">Firebase</span><span class="p-pill">Recharts</span><span class="p-pill">Firestore</span>
+            <span class="p-pill">React</span><span class="p-pill">Node.js</span>
+            <span class="p-pill">Socket.IO</span><span class="p-pill">Express</span><span class="p-pill">SHA-256</span>
           </div>
         </div>
+        <span class="p-live">Live <span aria-hidden="true">&nearr;</span></span>
         <div class="p-arr">&nearr;</div>
       </a>
 
@@ -1188,6 +1191,7 @@ footer {
             <span class="p-pill">Framer Motion</span><span class="p-pill">Firebase Hosting</span>
           </div>
         </div>
+        <span class="p-live">Live <span aria-hidden="true">&nearr;</span></span>
         <div class="p-arr">&nearr;</div>
       </a>
 
@@ -1201,10 +1205,11 @@ footer {
             <span class="p-pill">Cloudinary</span><span class="p-pill">Zod</span><span class="p-pill">Firebase Auth</span>
           </div>
         </div>
+        <span class="p-live">Live <span aria-hidden="true">&nearr;</span></span>
         <div class="p-arr">&nearr;</div>
       </a>
 
-      <a href="#" class="proj-card">
+      <a href="https://akglobalsolutions.in" target="_blank" rel="noopener noreferrer" class="proj-card">
         <div class="p-num">04</div>
         <div class="p-body">
           <h3 class="p-title">AK Global Solutions</h3>
@@ -1214,6 +1219,7 @@ footer {
             <span class="p-pill">Framer Motion</span><span class="p-pill">Firebase</span><span class="p-pill">Vercel</span>
           </div>
         </div>
+        <span class="p-live">Live <span aria-hidden="true">&nearr;</span></span>
         <div class="p-arr">&nearr;</div>
       </a>
 
@@ -1229,6 +1235,20 @@ footer {
     <div class="edu-grid">
       <div class="edu-row rv d2">
         <div class="edu-meta">
+          <div class="edu-yr">2026 &mdash; 2028</div>
+          <div class="edu-school">Galgotias College of Engineering and Technology<br>Greater Noida &bull; Pursuing</div>
+        </div>
+        <div>
+          <h3 class="edu-deg">Master of Computer Applications (MCA)</h3>
+          <p class="edu-p">Pursuing advanced studies in computer applications and software development.</p>
+          <div class="edu-tags">
+            <span class="edu-t">MCA</span>
+            <span class="edu-t">Software Development</span>
+          </div>
+        </div>
+      </div>
+      <div class="edu-row rv d2">
+        <div class="edu-meta">
           <div class="edu-yr">2023 &mdash; 2026</div>
           <div class="edu-school">Galgotias University<br>Greater Noida &bull; Completed</div>
         </div>
@@ -1238,6 +1258,7 @@ footer {
           <div class="edu-tags">
             <span class="edu-t">BCA Graduate</span>
             <span class="edu-t">Full Stack Engineering</span>
+            <span class="edu-t">Data Structures and Algorithms</span>
             <span class="edu-t">Software Testing</span>
             <span class="edu-t">DBMS</span>
             <span class="edu-t">Computer Networks</span>
@@ -1256,7 +1277,8 @@ footer {
             <span class="edu-t">Computer Science</span>
             <span class="edu-t">Mathematics</span>
             <span class="edu-t">English</span>
-            <span class="edu-t">Business Studies</span>
+            <span class="edu-t">Physics</span>
+            <span class="edu-t">Chemistry</span>
           </div>
         </div>
       </div>
